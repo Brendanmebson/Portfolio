@@ -74,30 +74,31 @@ const Contact = () => {
             </p>
             
             <div className="contact-details">
-              <div className="contact-item">
-                <Mail className="contact-icon" size={20} />
-                <div>
-                  <strong>Email</strong>
-                  <p>brendanmebson@gmail.com</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <Phone className="contact-icon" size={20} />
-                <div>
-                  <strong>Phone</strong>
-                  <p>+234 815 523 0994</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <MapPin className="contact-icon" size={20} />
-                <div>
-                  <strong>Location</strong>
-                  <p>Lagos, Nigeria</p>
-                </div>
-              </div>
-            </div>
+  <div className="contact-item">
+    <Mail className="contact-icon" size={20} />
+    <div>
+      <strong>Email</strong>
+      <p>brendanmebson@gmail.com</p>
+    </div>
+  </div>
+
+  <div className="contact-item">
+    <MapPin className="contact-icon" size={20} />
+    <div>
+      <strong>Location</strong>
+      <p>Nigeria (Remote-friendly 🌍)</p>
+    </div>
+  </div>
+
+  <div className="contact-item">
+    <Send className="contact-icon" size={20} />
+    <div>
+      <strong>Let's Collaborate</strong>
+      <p>Open to freelance, full-time & collabs 💡</p>
+    </div>
+  </div>
+</div>
+
             
             <div className="social-links">
               <h4>Follow Me</h4>
