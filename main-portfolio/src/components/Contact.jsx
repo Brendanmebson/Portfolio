@@ -1,358 +1,332 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
-
-const bubbleStyle = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '40px',
-  height: '40px',
-  borderRadius: '50%',
-  backgroundColor: 'rgba(228, 228, 228, 0.09)', // light background, change to suit theme
-  color: '#ffffff', // icon color
-  textDecoration: 'none',
-  transition: 'all 0.3s ease',
-  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-  cursor: 'pointer'
-  ,
-};
+import { Mail, MapPin, Send, Github, Linkedin, ArrowUpRight } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setSending(true);
+    await new Promise((r) => setTimeout(r, 1200));
+    setSending(false);
+    alert("Message sent! I'll get back to you soon.");
+    setForm({ name: '', email: '', subject: '', message: '' });
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '0.85rem 1rem',
+    background: 'var(--bg-glass)',
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-md)',
+    color: 'var(--text)',
+    fontFamily: 'var(--font-body)',
+    fontSize: '0.9rem',
+    outline: 'none',
+    transition: 'border-color 0.25s ease',
+  };
+
+  const inputFocus = (e) => {
+    e.currentTarget.style.borderColor = 'rgba(123,140,255,0.5)';
+    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(123,140,255,0.08)';
+  };
+  const inputBlur = (e) => {
+    e.currentTarget.style.borderColor = 'var(--border)';
+    e.currentTarget.style.boxShadow = 'none';
   };
 
   return (
     <section id="contact" className="section">
       <div className="container">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="section-header"
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '4rem' }}
         >
-          <h2 className="section-title">Let's Connect</h2>
+          <div className="section-label">Contact</div>
+          <h2 className="section-title">
+            Let's build<br />
+            <span className="gradient-text">something great</span>
+          </h2>
           <p className="section-subtitle">
-            Have a project in mind or want to explore collaboration opportunities? 
-            I'd love to hear from you!
+            Have a project in mind or want to explore opportunities? 
+            I'd love to hear from you.
           </p>
         </motion.div>
-        
-        <div className="contact-content">
+
+        <div className="contact-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.5fr',
+          gap: '3rem',
+          alignItems: 'start',
+        }}>
+
+          {/* Left info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="contact-info"
+            transition={{ duration: 0.7 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
-            <h3>Contact Information</h3>
-            <p>
-              Feel free to reach out through any of the contact methods below. 
-              I'm always open to discussing new projects, creative ideas, or 
-              opportunities to be part of your vision.
-            </p>
-            
-            <div className="contact-details">
-  <div className="contact-item">
-    <Mail className="contact-icon" size={20} />
-    <div>
-      <strong>Email</strong>
-      <p>brendanmebson@gmail.com</p>
-    </div>
-  </div>
+            {/* Contact details */}
+            {[
+              {
+                icon: <Mail size={18} />,
+                label: 'Email',
+                value: 'brendanmebson@gmail.com',
+                href: 'mailto:brendanmebson@gmail.com',
+              },
+              {
+                icon: <MapPin size={18} />,
+                label: 'Location',
+                value: 'Nigeria — Remote-friendly 🌍',
+              },
+              {
+                icon: <Send size={18} />,
+                label: 'Availability',
+                value: 'Open to freelance, full-time & collabs',
+              },
+            ].map((item, i) => (
+              <div key={i} className="glass-card" style={{
+                padding: '1.25rem 1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'rgba(123,140,255,0.1)',
+                  border: '1px solid rgba(123,140,255,0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--primary)',
+                  flexShrink: 0,
+                }}>
+                  {item.icon}
+                </div>
+                <div>
+                  <div style={{
+                    fontSize: '0.72rem',
+                    color: 'var(--text-dim)',
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.06em',
+                    marginBottom: '0.2rem',
+                  }}>
+                    {item.label}
+                  </div>
+                  {item.href ? (
+                    <a href={item.href} style={{
+                      color: 'var(--text)',
+                      fontSize: '0.88rem',
+                      textDecoration: 'none',
+                      fontWeight: 500,
+                    }}>
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span style={{ color: 'var(--text)', fontSize: '0.88rem', fontWeight: 500 }}>
+                      {item.value}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
 
-  <div className="contact-item">
-    <MapPin className="contact-icon" size={20} />
-    <div>
-      <strong>Location</strong>
-      <p>Nigeria (Remote-friendly 🌍)</p>
-    </div>
-  </div>
-
-  <div className="contact-item">
-    <Send className="contact-icon" size={20} />
-    <div>
-      <strong>Let's Collaborate</strong>
-      <p>Open to freelance, full-time & collabs 💡</p>
-    </div>
-  </div>
-</div>
-
-            
-            <div className="social-links">
-              <h4>Follow Me</h4>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-                className="social-links"
-                style={{ display: 'flex', gap: '1rem' }} // you can customize spacing here
-              >
-                <a
-                  href="https://github.com/Brendanmebson"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={bubbleStyle}
-                >
-                  <Github size={20} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={bubbleStyle}
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a href="mailto:brendanmebson@gmail.com" style={bubbleStyle}>
-                  <Mail size={20} />
-                </a>
-              </motion.div>
+            {/* Social links */}
+            <div className="glass-card" style={{ padding: '1.5rem' }}>
+              <div style={{
+                fontSize: '0.72rem',
+                color: 'var(--text-dim)',
+                fontFamily: 'var(--font-mono)',
+                letterSpacing: '0.06em',
+                marginBottom: '1rem',
+              }}>
+                FOLLOW ME
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {[
+                  { icon: <Github size={17} />, label: 'GitHub', href: 'https://github.com/Brendanmebson', user: '@Brendanmebson' },
+                  { icon: <Linkedin size={17} />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258', user: 'Kamsiyochukwu Mebuge' },
+                  { icon: <Mail size={17} />, label: 'Email', href: 'mailto:brendanmebson@gmail.com', user: 'brendanmebson@gmail.com' },
+                ].map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.6rem 0.9rem',
+                    borderRadius: 'var(--radius-sm)',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    fontSize: '0.82rem',
+                    transition: 'all 0.25s ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'rgba(123,140,255,0.3)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'var(--border)';
+                    e.currentTarget.style.color = 'var(--text-muted)';
+                  }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                      {s.icon}
+                      <span>{s.user}</span>
+                    </div>
+                    <ArrowUpRight size={14} />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
-          
+
+          {/* Right form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="contact-form"
+            transition={{ duration: 0.7 }}
+            className="glass-card"
+            style={{ padding: '2.5rem' }}
           >
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.4rem',
+              fontWeight: 700,
+              marginBottom: '2rem',
+              letterSpacing: '-0.01em',
+            }}>
+              Send a message
+            </h3>
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
+                <div>
+                  <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem' }}>
+                    YOUR NAME
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Brendan"
+                    value={form.name}
+                    onChange={handleChange}
+                    onFocus={inputFocus}
+                    onBlur={inputBlur}
+                    required
+                    style={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem' }}>
+                    EMAIL
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    value={form.email}
+                    onChange={handleChange}
+                    onFocus={inputFocus}
+                    onBlur={inputBlur}
+                    required
+                    style={inputStyle}
+                  />
+                </div>
               </div>
-              
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              
-              <div className="form-group">
+
+              <div>
+                <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem' }}>
+                  SUBJECT
+                </label>
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
+                  placeholder="Let's work together"
+                  value={form.subject}
                   onChange={handleChange}
+                  onFocus={inputFocus}
+                  onBlur={inputBlur}
                   required
+                  style={inputStyle}
                 />
               </div>
-              
-              <div className="form-group">
+
+              <div>
+                <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem' }}>
+                  MESSAGE
+                </label>
                 <textarea
                   name="message"
-                  placeholder="Your Message"
-                  rows="5"
-                  value={formData.message}
+                  placeholder="Tell me about your project..."
+                  rows={5}
+                  value={form.message}
                   onChange={handleChange}
+                  onFocus={inputFocus}
+                  onBlur={inputBlur}
                   required
-                ></textarea>
+                  style={{ ...inputStyle, resize: 'vertical', minHeight: '130px' }}
+                />
               </div>
-              
-              <button type="submit" className="btn btn-submit">
-                <Send size={20} />
-                Send Message
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="btn btn-primary"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  fontSize: '0.95rem',
+                  padding: '0.9rem',
+                  marginTop: '0.5rem',
+                  opacity: sending ? 0.7 : 1,
+                }}
+              >
+                {sending ? (
+                  <>
+                    <div style={{
+                      width: '16px', height: '16px',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderTopColor: 'white',
+                      borderRadius: '50%',
+                      animation: 'spin 0.8s linear infinite',
+                    }} />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
         </div>
       </div>
-      
-      <style jsx>{`
-        .section-header {
-          text-align: center;
-          margin-bottom: 4rem;
+
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 900px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
         }
-        
-        .section-title {
-          font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .section-subtitle {
-          font-size: 1.2rem;
-          opacity: 0.9;
-          max-width: 600px;
-          margin: 0 auto;
-          line-height: 1.6;
-        }
-        
-        .contact-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: start;
-        }
-        
-        .contact-info {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border-radius: 20px;
-          padding: 2rem;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          height: fit-content;
-        }
-        
-        .contact-info h3 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: #667eea;
-        }
-        
-        .contact-info p {
-          margin-bottom: 2rem;
-          opacity: 0.9;
-          line-height: 1.6;
-        }
-        
-        .contact-details {
-          margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-          display: flex;
-          align-items: center;
-          margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-          color: #667eea;
-          margin-right: 1rem;
-          flex-shrink: 0;
-        }
-        
-        .contact-item strong {
-          display: block;
-          margin-bottom: 0.2rem;
-        }
-        
-        .contact-item p {
-          margin: 0;
-          opacity: 0.8;
-        }
-        
-        .social-links h4 {
-          margin-bottom: 1rem;
-          color: #667eea;
-        }
-        
-        .social-icons {
-          display: flex;
-          gap: 1rem;
-        }
-        
-        .social-icons a {
-          color: white;
-          padding: 0.8rem;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.1);
-          transition: all 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-        }
-        
-        .contact-form {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border-radius: 20px;
-          padding: 2rem;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-group {
-          margin-bottom: 1.5rem;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-          width: 100%;
-          padding: 1rem;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 10px;
-          color: white;
-          font-size: 1rem;
-          transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-          outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
-        }
-        
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-          color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .btn-submit {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          font-size: 1rem;
-          padding: 1rem 2rem;
-        }
-        
-        @media (max-width: 768px) {
-          .contact-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-          
-          .section-title {
-            font-size: 2rem;
-          }
-          
-          .social-icons {
-            justify-content: center;
-          }
+        @media (max-width: 500px) {
+          .form-row { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

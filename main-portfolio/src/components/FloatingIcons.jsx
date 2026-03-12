@@ -4,53 +4,49 @@ import {
   FaCss3Alt, FaHtml5, FaCloud
 } from 'react-icons/fa';
 import {
-  SiTypescript, SiMongodb, SiFirebase, SiPhp, SiFigma, SiKotlin, SiCplusplus, SiReact, SiTailwindcss, SiExpress, SiSupabase, 
+  SiTypescript, SiMongodb, SiFirebase, SiPhp, SiFigma,
+  SiKotlin, SiCplusplus, SiTailwindcss, SiExpress, SiSupabase
 } from 'react-icons/si';
 
 const ICONS = [
-  { icon: <FaReact />, size: 80 },
-  { icon: <FaJs />, size: 75 },
-  { icon: <SiTypescript />, size: 78 },
-  { icon: <FaNodeJs />, size: 82 },
-  { icon: <FaPython />, size: 75 },
-  { icon: <FaJava />, size: 80 },
-  { icon: <SiMongodb />, size: 78 },
-  { icon: <FaGitAlt />, size: 75 },
-  { icon: <SiReact />, size: 80 },
-  { icon: <FaCss3Alt />, size: 77 },
-  { icon: <FaHtml5 />, size: 79 },
-  { icon: <SiFirebase />, size: 81 },
-  { icon: <FaCloud />, size: 83 },
-  { icon: <FaDocker />, size: 80 },
-  { icon: <SiKotlin />, size: 78 },
-  { icon: <SiCplusplus />, size: 76 },
-  { icon: <SiPhp />, size: 74 },
-  { icon: <SiFigma />, size: 75 },
-  { icon: <SiTailwindcss />, size: 80 },
-  { icon: <SiExpress />, size: 82 },
-  { icon: <SiSupabase />, size: 77 }
+  { icon: <FaReact />, size: 72 },
+  { icon: <FaJs />, size: 68 },
+  { icon: <SiTypescript />, size: 70 },
+  { icon: <FaNodeJs />, size: 74 },
+  { icon: <FaPython />, size: 68 },
+  { icon: <FaJava />, size: 72 },
+  { icon: <SiMongodb />, size: 70 },
+  { icon: <FaGitAlt />, size: 68 },
+  { icon: <FaCss3Alt />, size: 70 },
+  { icon: <FaHtml5 />, size: 72 },
+  { icon: <SiFirebase />, size: 73 },
+  { icon: <FaCloud />, size: 75 },
+  { icon: <FaDocker />, size: 72 },
+  { icon: <SiKotlin />, size: 70 },
+  { icon: <SiCplusplus />, size: 68 },
+  { icon: <SiPhp />, size: 66 },
+  { icon: <SiFigma />, size: 68 },
+  { icon: <SiTailwindcss />, size: 72 },
+  { icon: <SiExpress />, size: 74 },
+  { icon: <SiSupabase />, size: 70 },
 ];
 
 const FloatingIcons = () => {
   const iconRefs = useRef([]);
   const velocities = useRef([]);
-  const containerRef = useRef(null);
+  const animRef = useRef();
 
   useEffect(() => {
-    const container = containerRef.current;
     const width = window.innerWidth;
     const height = window.innerHeight;
 
     iconRefs.current.forEach((ref, i) => {
       if (ref) {
-        // Random initial position
-        ref.style.left = `${Math.random() * width}px`;
-        ref.style.top = `${Math.random() * height}px`;
-
-        // Random velocity
+        ref.style.left = `${Math.random() * (width - ICONS[i].size)}px`;
+        ref.style.top = `${Math.random() * (height - ICONS[i].size)}px`;
         velocities.current[i] = {
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
+          dx: (Math.random() - 0.5) * 0.4,
+          dy: (Math.random() - 0.5) * 0.4,
         };
       }
     });
@@ -62,74 +58,62 @@ const FloatingIcons = () => {
         let y = parseFloat(refA.style.top);
         let { dx, dy } = velocities.current[i];
 
-        // Move
         x += dx;
         y += dy;
 
-        // Bounce off walls
         if (x <= 0 || x >= width - ICONS[i].size) velocities.current[i].dx *= -1;
         if (y <= 0 || y >= height - ICONS[i].size) velocities.current[i].dy *= -1;
 
-        // Repel from nearby icons
         iconRefs.current.forEach((refB, j) => {
           if (i !== j && refB) {
-            const x2 = parseFloat(refB.style.left);
-            const y2 = parseFloat(refB.style.top);
-            const dx = x - x2;
-            const dy = y - y2;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const minDist = (ICONS[i].size + ICONS[j].size) / 1.5;
-
+            const bx = parseFloat(refB.style.left);
+            const by = parseFloat(refB.style.top);
+            const ddx = x - bx;
+            const ddy = y - by;
+            const dist = Math.sqrt(ddx * ddx + ddy * ddy);
+            const minDist = (ICONS[i].size + ICONS[j].size) / 1.4;
             if (dist < minDist && dist > 0) {
-              const angle = Math.atan2(dy, dx);
-              x += Math.cos(angle);
-              y += Math.sin(angle);
+              const angle = Math.atan2(ddy, ddx);
+              x += Math.cos(angle) * 0.6;
+              y += Math.sin(angle) * 0.6;
             }
           }
         });
 
-        // Apply new position
         refA.style.left = `${x}px`;
         refA.style.top = `${y}px`;
       });
 
-      requestAnimationFrame(animate);
+      animRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animRef.current = requestAnimationFrame(animate);
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
   }, []);
 
   return (
-    <div className="floating-icons-container" ref={containerRef}>
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      overflow: 'hidden',
+      pointerEvents: 'none',
+      zIndex: 0,
+    }}>
       {ICONS.map((item, index) => (
         <div
           key={index}
-          ref={(el) => (iconRefs.current[index] = el)}
-          className="floating-icon"
+          ref={(el) => { iconRefs.current[index] = el; }}
           style={{
-            fontSize: `${item.size}px`,
             position: 'absolute',
-            color: 'rgba(255, 255, 255, 0.05)',
+            fontSize: `${item.size}px`,
+            color: 'rgba(123, 140, 255, 0.025)',
             pointerEvents: 'none',
             userSelect: 'none',
-            zIndex: 0,
           }}
         >
           {item.icon}
         </div>
       ))}
-
-      <style jsx>{`
-        .floating-icons-container {
-          position: fixed;
-          width: 100vw;
-          height: 100vh;
-          overflow: hidden;
-          top: 0;
-          left: 0;
-          z-index: -1;
-        }
-      `}</style>
     </div>
   );
 };

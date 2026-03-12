@@ -1,303 +1,224 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Server, Database, Gamepad2, Languages } from 'lucide-react';
+import { Code2, Smartphone, Server, Layout, Gamepad2, Languages, GraduationCap, Briefcase, Users } from 'lucide-react';
+
+const services = [
+  { icon: <Layout size={22} />, title: 'Frontend', desc: 'Pixel-perfect UIs with React, TypeScript, and modern CSS.' },
+  { icon: <Server size={22} />, title: 'Backend', desc: 'Scalable APIs with Node.js, Express, and cloud databases.' },
+  { icon: <Smartphone size={22} />, title: 'Mobile', desc: 'Cross-platform apps with React Native and Kotlin.' },
+  { icon: <Code2 size={22} />, title: 'Full-Stack', desc: 'End-to-end ownership from schema design to deployment.' },
+];
+
+const timeline = [
+  { icon: <GraduationCap size={16} />, period: '2021 – 2025', title: 'BSc Software Engineering', org: 'Babcock University', desc: 'Active in GDSC, Coding Club, and React Developers Club.' },
+  { icon: <Briefcase size={16} />, period: '2023', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Built web applications with React and Tailwind CSS.' },
+  { icon: <Users size={16} />, period: 'Ongoing', title: 'Freelance React Developer', org: 'Independent', desc: 'Delivering custom web and mobile solutions for diverse clients.' },
+];
+
+const hobbies = ['Gaming', 'Guitar', 'Music', 'Photography', 'AR/VR', 'Books', 'Football', 'Machine Learning', 'Plants', 'Startups', 'UI/UX', 'Board Games'];
+const languages = ['English — Fluent', 'Igbo — Fluent', 'Yoruba — Basic', 'French — Beginner'];
 
 const About = () => {
-  const services = [
-    {
-      icon: <Code size={40} />,
-      title: "Frontend Development",
-      description: "Building responsive and interactive user interfaces with React, TypeScript, and modern CSS frameworks."
-    },
-    {
-      icon: <Server size={40} />,
-      title: "Backend Development",
-      description: "Creating robust server-side applications using Node.js, Express, and various database technologies."
-    },
-    {
-      icon: <Smartphone size={40} />,
-      title: "Mobile Development",
-      description: "Developing cross-platform mobile applications using React Native and native technologies."
-    },
-    {
-      icon: <Database size={40} />,
-      title: "Full-Stack Solutions",
-      description: "End-to-end application development from database design to user interface implementation."
-    }
-  ];
-
-  const hobbies = ["Gaming", "Guitar", "Music", "Photography", "Exploring Tech", "Augmented and Virtual Reality", "Books", "Football", "Machine Learning", "Plants", "Startup", "Video and board games", "UI/UX designing", "Chidan"];
-  const languages = ["English (fluent)", "Igbo (fluent)", "Yoruba (basic)", "French (beginner)"];
-
   return (
     <section id="about" className="section">
       <div className="container">
+
+        {/* CTAR-style section label */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="section-header"
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '5rem' }}
         >
-          <h2 className="section-title">About Me</h2>
-          <p className="section-subtitle">
-            A Software Engineering graduate with expertise in full-stack development,
-            mobile applications, and modern web technologies. Passionate about
-            creating innovative solutions that make a difference.
-          </p>
+          {/* Top border label — CTAR */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            marginBottom: '2rem',
+            paddingBottom: '1rem',
+            borderBottom: '1px solid var(--border)',
+          }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--text-dim)' }}>
+              02 / ABOUT
+            </span>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--border), transparent)' }} />
+          </div>
+
+          {/* Big editorial headline — CTAR sizing */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'end' }} className="about-header-grid">
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+              fontWeight: 700,
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              margin: 0,
+            }}>
+              Building things<br />
+              that <span style={{
+                background: 'var(--gradient-text)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>matter_</span>
+            </h2>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, margin: 0 }}>
+              A Software Engineering graduate deeply passionate about creating elegant solutions
+              at the intersection of great engineering and thoughtful design.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="about-content">
+        {/* Services — 4-col grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', marginBottom: '5rem' }} className="services-grid">
+          {services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              style={{
+                background: 'var(--bg)',
+                padding: '2rem 1.5rem',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'background 0.3s ease',
+                cursor: 'default',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-glass)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'var(--bg)'}
+            >
+              {/* CTAR-style number */}
+              <div style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '3.5rem',
+                fontWeight: 700,
+                color: 'var(--border)',
+                lineHeight: 1,
+                marginBottom: '1.25rem',
+                letterSpacing: '-0.04em',
+              }}>
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <div style={{
+                width: '36px', height: '36px',
+                borderRadius: 'var(--radius-sm)',
+                background: 'rgba(123,140,255,0.1)',
+                border: '1px solid rgba(123,140,255,0.2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--primary)',
+                marginBottom: '1rem',
+              }}>
+                {s.icon}
+              </div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
+                {s.title}
+              </h4>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{s.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Timeline + Extras */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }} className="about-lower-grid">
+
+          {/* Timeline */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="about-text"
+            transition={{ duration: 0.7 }}
           >
-            <h3>Academic Excellence</h3>
-            <p>
-              A Bachelor of Science in Software Engineering Degree holder at
-              Babcock University (2021–2025). Actively involved in coding clubs,
-              GDSC communities, and various technology events.
-            </p>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--text-dim)', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{ width: '20px', height: '1px', background: 'var(--primary)', display: 'inline-block' }} />
+              TIMELINE
+            </div>
 
-            <h3>Professional Experience</h3>
-            <p>
-              Frontend Developer Intern at IT Horizons (Zojatech) where I developed
-              web applications using React and Tailwind CSS. Currently working as
-              a Freelance React Developer, creating custom websites and applications
-              for various clients.
-            </p>
-
-            <h3>Leadership & Community</h3>
-            <p>
-              Active member of multiple developer communities including React
-              Developers Club, Google Developer Student Club, and Babcock University
-              Coding Club. Passionate about continuous learning and knowledge sharing.
-            </p>
+            {timeline.map((item, i) => (
+              <div key={i} style={{ display: 'flex', gap: '1.25rem', position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{
+                    width: '32px', height: '32px', borderRadius: '50%',
+                    background: 'rgba(123,140,255,0.1)',
+                    border: '1px solid rgba(123,140,255,0.25)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'var(--primary)', flexShrink: 0,
+                  }}>
+                    {item.icon}
+                  </div>
+                  {i < timeline.length - 1 && (
+                    <div style={{ width: '1px', flex: 1, background: 'linear-gradient(to bottom, rgba(123,140,255,0.2), transparent)', minHeight: '36px' }} />
+                  )}
+                </div>
+                <div style={{ paddingBottom: '2rem' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--primary)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.2rem' }}>
+                    {item.period}
+                  </span>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.2rem', letterSpacing: '-0.01em' }}>{item.title}</h4>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--accent)', fontFamily: 'var(--font-mono)', display: 'block', marginBottom: '0.4rem' }}>{item.org}</span>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </motion.div>
 
+          {/* Interests + Languages */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="services-grid"
+            transition={{ duration: 0.7 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
           >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="service-card"
-              >
-                <div className="service-icon">{service.icon}</div>
-                <h4>{service.title}</h4>
-                <p>{service.description}</p>
-              </motion.div>
-            ))}
+            <div className="glass-card" style={{ padding: '1.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <Gamepad2 size={18} color="var(--primary)" />
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600 }}>Interests</span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {hobbies.map(h => <span key={h} className="tag">{h}</span>)}
+              </div>
+            </div>
+
+            <div className="glass-card" style={{ padding: '1.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <Languages size={18} color="var(--primary)" />
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600 }}>Languages</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                {languages.map(lang => {
+                  const [name, level] = lang.split(' — ');
+                  return (
+                    <div key={lang} style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      padding: '0.55rem 0.9rem',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'rgba(123,140,255,0.05)',
+                      border: '1px solid rgba(123,140,255,0.1)',
+                    }}>
+                      <span style={{ fontSize: '0.86rem', fontWeight: 500 }}>{name}</span>
+                      <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}>{level}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Hobbies & Languages Section */}
-        <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className="extras-header"
->
-  <h3>Extras</h3>
-</motion.div>
-
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
-  className="extras"
->
-  <div className="extra-card">
-    <Gamepad2 size={32} />
-    <h4>Hobbies</h4>
-    <div className="pill-container">
-      {hobbies.map((hobby, i) => (
-        <span className="pill" key={i}>{hobby}</span>
-      ))}
-    </div>
-  </div>
-  <div className="extra-card">
-    <Languages size={32} />
-    <h4>Languages</h4>
-    <div className="pill-container">
-      {languages.map((lang, i) => (
-        <span className="pill" key={i}>{lang}</span>
-      ))}
-    </div>
-  </div>
-</motion.div>
-
       </div>
 
-      <style jsx>{`
-        .section-header {
-          text-align: center;
-          margin-bottom: 4rem;
-          margin-top: -2rem;
+      <style>{`
+        @media (max-width: 900px) {
+          .about-header-grid { grid-template-columns: 1fr !important; }
+          .services-grid { grid-template-columns: 1fr 1fr !important; }
+          .about-lower-grid { grid-template-columns: 1fr !important; }
         }
-
-        .section-title {
-          font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 6rem;
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .section-subtitle {
-          font-size: 1.2rem;
-          opacity: 0.9;
-          max-width: 600px;
-          margin: 0 auto;
-          line-height: 1.6;
-        }
-
-        .about-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: start;
-        }
-
-        .about-text h3 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: #667eea;
-        }
-
-        .about-text p {
-          margin-bottom: 2rem;
-          opacity: 0.9;
-          line-height: 1.7;
-        }
-
-        .services-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
-        }
-
-        .service-card {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border-radius: 15px;
-          padding: 1.5rem;
-          text-align: center;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-icon {
-          color: #667eea;
-          margin-bottom: 1rem;
-        }
-
-        .service-card h4 {
-          font-size: 1.1rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .service-card p {
-          font-size: 0.9rem;
-          opacity: 0.8;
-          line-height: 1.4;
-        }
-
-        .extras {
-          display: flex;
-          gap: 2rem;
-          margin-top: 4rem;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .extra-card {
-          background: rgba(255, 255, 255, 0.06);
-          padding: 1.5rem;
-          border-radius: 15px;
-          text-align: center;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          width: 100%;
-        }
-
-        .extra-card h4 {
-          margin-top: 0.5rem;
-          color: #fff;
-          font-size: 1.1rem;
-        }
-
-        .pill-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          justify-content: center;
-          margin-top: 0.8rem;
-        }
-
-        .pill {
-          background: rgba(255, 255, 255, 0.08);
-          padding: 0.4rem 0.9rem;
-          border-radius: 9999px;
-          font-size: 0.8rem;
-          font-weight: 500;
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .extras-header {
-  text-align: center;
-  margin-top: 3rem;
-  margin-bottom: -2.5rem;
-}
-
-.extras-header h3 {
-  font-size: 2.0rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-
-        @media (max-width: 768px) {
-          .about-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-
-          .services-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .section-title {
-            font-size: 2rem;
-          }
-
-          .extra-card {
-            width: 100%;
-          }
+        @media (max-width: 600px) {
+          .services-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

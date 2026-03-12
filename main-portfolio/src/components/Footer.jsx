@@ -1,199 +1,178 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, Instagram } from 'lucide-react';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="footer">
+    <footer style={{
+      borderTop: '1px solid var(--border)',
+      padding: '3.5rem 0 2rem',
+      position: 'relative',
+      zIndex: 1,
+    }}>
+      {/* Subtle gradient accent at top */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: '50%',
+        transform: 'translateX(-50%)',
+        width: '300px',
+        height: '1px',
+        background: 'var(--gradient)',
+        opacity: 0.4,
+      }} />
+
       <div className="container">
-        <div className="footer-content">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="footer-main"
-          >
-            <div className="footer-brand">
-              <h3>.CodeWithBrendan</h3>
-              <p>
-                Building intelligent systems for a smarter tomorrow. 
-                Specializing in full-stack development and innovative solutions.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
+            gap: '3rem',
+            marginBottom: '3rem',
+          }} className="footer-grid">
+
+            {/* Brand */}
+            <div>
+              <div style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.4rem',
+                fontWeight: 700,
+                background: 'var(--gradient-text)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                marginBottom: '0.75rem',
+                letterSpacing: '-0.01em',
+              }}>
+                .CodeWithBrendan
+              </div>
+              <p style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.7,
+                maxWidth: '240px',
+              }}>
+                Building intelligent systems across web & mobile. 
+                Transforming ideas into elegant, performant products.
               </p>
-            </div>
-            
-            <div className="footer-links">
-              <div className="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#projects">Projects</a></li>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                </ul>
-              </div>
-              
-              <div className="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                  <li><a href="/resume.pdf" download >Download Resume</a></li>
-                  <li><a href="https://github.com/Brendanmebson" target="_blank">GitHub Projects</a></li>
-                  <li><a href="#contact">Get In Touch</a></li>
-                </ul>
-              </div>
-              
-              <div className="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                  <li><a href="https://github.com/Brendanmebson" target="_blank">GitHub</a></li>
-                  <li><a href="https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258" target="_blank">LinkedIn</a></li>
-                  <li><a href="mailto:brendanmebson@gmail.com">Email</a></li>
-                  <li><a href="https://www.instagram.com/brendanmebson/" target="_blank">Instagram</a></li>
-                </ul>
+              <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1.25rem' }}>
+                {[
+                  { href: 'https://github.com/Brendanmebson', icon: <Github size={16} /> },
+                  { href: 'https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258', icon: <Linkedin size={16} /> },
+                  { href: 'mailto:brendanmebson@gmail.com', icon: <Mail size={16} /> },
+                  { href: 'https://www.instagram.com/brendanmebson/', icon: <Instagram size={16} /> },
+                ].map((s, i) => (
+                  <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="icon-bubble" style={{ width: '34px', height: '34px' }}>
+                    {s.icon}
+                  </a>
+                ))}
               </div>
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="footer-bottom"
-          >
-            <p>&copy; 2025 Mebuge Kamsiyochukwu Brendan. All rights reserved.</p>
-            <button onClick={scrollToTop} className="back-to-top">
-              <ArrowUp size={20} />
+
+            {/* Quick links */}
+            {[
+              {
+                title: 'Navigate',
+                links: [
+                  { label: 'About', href: '#about' },
+                  { label: 'Projects', href: '#projects' },
+                  { label: 'Skills', href: '#skills' },
+                  { label: 'Contact', href: '#contact' },
+                ],
+              },
+              {
+                title: 'Resources',
+                links: [
+                  { label: 'Download Resume', href: '/resume.pdf', download: true },
+                  { label: 'GitHub Projects', href: 'https://github.com/Brendanmebson' },
+                  { label: 'Get In Touch', href: '#contact' },
+                ],
+              },
+              {
+                title: 'Connect',
+                links: [
+                  { label: 'GitHub', href: 'https://github.com/Brendanmebson' },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258' },
+                  { label: 'Email', href: 'mailto:brendanmebson@gmail.com' },
+                  { label: 'Instagram', href: 'https://www.instagram.com/brendanmebson/' },
+                ],
+              },
+            ].map((col) => (
+              <div key={col.title}>
+                <div style={{
+                  fontSize: '0.72rem',
+                  color: 'var(--text-dim)',
+                  fontFamily: 'var(--font-mono)',
+                  letterSpacing: '0.1em',
+                  marginBottom: '1.25rem',
+                }}>
+                  {col.title.toUpperCase()}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {col.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      style={{
+                        color: 'var(--text-muted)',
+                        textDecoration: 'none',
+                        fontSize: '0.88rem',
+                        transition: 'color 0.2s ease',
+                        display: 'inline-block',
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-light)')}
+                      onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom bar */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: '2rem',
+            borderTop: '1px solid var(--border)',
+          }} className="footer-bottom">
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+              © 2025 Mebuge Kamsiyochukwu Brendan — All rights reserved.
+            </p>
+            <button
+              onClick={scrollToTop}
+              className="btn btn-outline"
+              style={{ gap: '0.4rem', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
+            >
+              <ArrowUp size={14} />
               Back to top
             </button>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
-      
-      <style jsx>{`
-        .footer {
-          background: rgba(0, 0, 0, 0.2);
-          backdrop-filter: blur(10px);
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 3rem 0 1rem;
-          position: relative;
-          z-index: 10;
+
+      <style>{`
+        @media (max-width: 900px) {
+          .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
         }
-        
-        .footer-content {
-          color: white;
+        @media (max-width: 600px) {
+          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
         }
-        
-        .footer-main {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 3rem;
-          margin-bottom: 2rem;
-        }
-        
-        .footer-brand h3 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .footer-brand p {
-          opacity: 0.8;
-          line-height: 1.6;
-        }
-        
-        .footer-links {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-         gap: 2rem;
-       }
-
-       .footer-section h4 {
-         margin-bottom: 1rem;
-         color: #667eea;
-         font-size: 1.1rem;
-       }
-
-       .footer-section ul {
-         list-style: none;
-       }
-
-       .footer-section ul li {
-         margin-bottom: 0.5rem;
-       }
-
-       .footer-section ul li a {
-         color: rgba(255, 255, 255, 0.8);
-         text-decoration: none;
-         transition: all 0.3s ease;
-       }
-
-       .footer-section ul li a:hover {
-         color: #667eea;
-         padding-left: 0.5rem;
-       }
-
-       .footer-bottom {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding-top: 2rem;
-         border-top: 1px solid rgba(255, 255, 255, 0.1);
-       }
-
-       .footer-bottom p {
-         opacity: 0.6;
-         font-size: 0.9rem;
-       }
-
-       .back-to-top {
-         display: flex;
-         align-items: center;
-         gap: 0.5rem;
-         background: rgba(255, 255, 255, 0.1);
-         border: 1px solid rgba(255, 255, 255, 0.2);
-         color: white;
-         padding: 0.5rem 1rem;
-         border-radius: 25px;
-         cursor: pointer;
-         transition: all 0.3s ease;
-       }
-
-       .back-to-top:hover {
-         background: rgba(255, 255, 255, 0.2);
-         transform: translateY(-2px);
-       }
-
-       @media (max-width: 768px) {
-         .footer-main {
-           grid-template-columns: 1fr;
-           gap: 2rem;
-         }
-
-         .footer-links {
-           grid-template-columns: 1fr;
-           gap: 1.5rem;
-         }
-
-         .footer-bottom {
-           flex-direction: column;
-           gap: 1rem;
-           text-align: center;
-         }
-       }
-     `}</style>
-   </footer>
- );
+      `}</style>
+    </footer>
+  );
 };
 
 export default Footer;

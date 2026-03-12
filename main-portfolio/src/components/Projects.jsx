@@ -1,248 +1,279 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import Slider from 'react-slick';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Image as ImageIcon } from 'lucide-react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-const bubbleStyle = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '40px',
-  height: '40px',
-  borderRadius: '50%',
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  color: '#fff',
-  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-  cursor: 'pointer',
-};
-
-const btnStyle = {
-  padding: '0.6rem 1rem',
-  borderRadius: '8px',
-  border: '1px solid rgba(255, 255, 255, 0.4)',
-  background: 'rgba(255, 255, 255, 0.1)',
-  color: '#fff',
-  fontSize: '0.9rem',
-  textDecoration: 'none',
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '0.4rem',
-  transition: 'background 0.2s ease',
-};
+const projects = [
+  {
+    title: 'Campus Safety App',
+    description: 'Emergency reporting with live location sharing and security response.',
+    detail: 'Students report emergencies, share live location, and reach campus security instantly via a React Native mobile app paired with a React admin dashboard.',
+    technologies: ['React', 'React Native', 'Tailwind CSS', 'Supabase'],
+    images: ['https://picsum.photos/800/500?random=101', 'https://picsum.photos/800/500?random=102'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+    featured: true,
+  },
+  {
+    title: 'Weekly Report Aggregator',
+    description: 'Role-based attendance tracking and automated report generation.',
+    detail: 'A full-stack MERN application with role-based access, smart attendance tracking, and automated weekly PDF report generation.',
+    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+    images: ['https://picsum.photos/800/500?random=103', 'https://picsum.photos/800/500?random=104'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+    featured: true,
+  },
+  {
+    title: 'Personal Finance Tracker',
+    description: 'Budget maker and expense tracker with real-time analytics.',
+    detail: 'A responsive React app with Chart.js visualizations, expense categorisation, and budget goals.',
+    technologies: ['React', 'Tailwind CSS', 'Chart.js', 'APIs'],
+    images: ['https://picsum.photos/800/500?random=105', 'https://picsum.photos/800/500?random=106'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+  },
+  {
+    title: 'Real-Time Messaging App',
+    description: 'WebSocket-powered chat with a sleek, modern UI.',
+    detail: 'Real-time chat with TypeScript, WebSockets, and a polished UI supporting rooms, threads, and online presence.',
+    technologies: ['React', 'TypeScript', 'WebSockets', 'Tailwind CSS'],
+    images: ['https://picsum.photos/800/500?random=107', 'https://picsum.photos/800/500?random=108'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+  },
+  {
+    title: 'Crypto Dashboard',
+    description: 'Live crypto portfolio monitoring with charts and alerts.',
+    detail: 'Pulls live prices from crypto APIs, renders interactive Chart.js graphs, and supports portfolio tracking.',
+    technologies: ['TypeScript', 'React', 'Tailwind CSS', 'Crypto APIs'],
+    images: ['https://picsum.photos/800/500?random=109', 'https://picsum.photos/800/500?random=110'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+  },
+  {
+    title: 'QR CODEx Generator',
+    description: 'Customizable QR code generation for URLs and text.',
+    detail: 'Lightweight tool generating styled, customizable QR codes instantly from any URL or text input.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'QR Code API'],
+    images: ['https://picsum.photos/800/500?random=112', 'https://picsum.photos/800/500?random=113'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+  },
+];
 
 const sliderSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
-  arrows: true,
+  speed: 400,
   slidesToShow: 1,
   slidesToScroll: 1,
+  arrows: false,
 };
 
-const projects = [
-  {
-    title: "Campus Safety App & Admin Dashboard",
-    description: "Students report emergencies, share live location, and reach campus security.",
-    technologies: ["React", "React Native", "Tailwind CSS", "Supabase"],
-    images: ["https://picsum.photos/400/250?random=101", "https://picsum.photos/400/250?random=102"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-  {
-    title: "Weekly Report Aggregation Web App",
-    description: "Attendance tracking with role‑based access and automated report generation.",
-    technologies: ["MongoDB", "Express.js", "React", "Node.js"],
-    images: ["https://picsum.photos/400/250?random=103", "https://picsum.photos/400/250?random=104"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-  {
-    title: "Personal Finance Tracker",
-    description: "Budget maker, expense tracker and real-time reporting.",
-    technologies: ["React", "Tailwind CSS", "APIs", "Chart.js"],
-    images: ["https://picsum.photos/400/250?random=105", "https://picsum.photos/400/250?random=106"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-  {
-    title: "Real‑time Messaging App",
-    description: "Chat app with WebSockets, TypeScript, Tailwind and sleek UI.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "WebSockets"],
-    images: ["https://picsum.photos/400/250?random=107", "https://picsum.photos/400/250?random=108"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-  {
-    title: "Crypto Dashboard",
-    description: "Monitor crypto portfolios with live prices and charts.",
-    technologies: ["TypeScript", "Tailwind CSS", "Crypto APIs", "React"],
-    images: ["https://picsum.photos/400/250?random=109", "https://picsum.photos/400/250?random=110"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-  {
-    title: "QR CODEx Generator",
-    description: "Generate customizable QR codes for URLs or text instantly.",
-    technologies: ["HTML", "CSS", "JavaScript", "QR Code API"],
-    images: ["https://picsum.photos/400/250?random=112", "https://picsum.photos/400/250?random=113"],
-    github: "https://github.com/Brendanmebson",
-    demo: "#",
-  },
-];
-
 const Projects = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [images, setImages] = useState([]);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [hovered, setHovered] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [lightboxIdx, setLightboxIdx] = useState(0);
 
-  const openViewer = (imgs, idx) => {
-    setImages(imgs.map(url => ({ src: url })));
-    setPhotoIndex(idx);
-    setIsOpen(true);
+  const openLightbox = (imgs, idx) => {
+    setLightboxImages(imgs.map((src) => ({ src })));
+    setLightboxIdx(idx);
+    setLightboxOpen(true);
   };
 
   return (
     <section id="projects" className="section">
       <div className="container">
-        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="section-header">
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle">Explore my work in web, mobile & full‑stack tech.</p>
+
+        {/* Section header — CTAR style */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '4rem' }}
+        >
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            marginBottom: '2rem',
+            paddingBottom: '1rem',
+            borderBottom: '1px solid var(--border)',
+          }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--text-dim)' }}>
+              03 / WORK
+            </span>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--border), transparent)' }} />
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'end' }} className="projects-header-grid">
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+              fontWeight: 700,
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              margin: 0,
+            }}>
+              Featured<br />
+              <span style={{
+                background: 'var(--gradient-text)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>Projects_</span>
+            </h2>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, margin: 0 }}>
+              A curated selection showcasing my range — from mobile apps
+              to full-stack platforms and everything in between.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="projects-grid">
-          {projects.map((p, i) => (
-            <motion.div key={i} className="project-card"
+        {/* Arch-style bento project grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridAutoRows: 'auto',
+          gap: '1.25rem',
+        }} className="projects-grid">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.07 }}
+              className="glass-card project-card"
+              style={{
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                ...(project.featured && i === 0 ? { gridColumn: 'span 2' } : {}),
+              }}
             >
-              <div className="project-image"
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              >
+              {/* Image carousel */}
+              <div style={{ position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
                 <Slider {...sliderSettings}>
-                  {p.images.map((img, idx) => (
-                    <div key={idx} onClick={() => openViewer(p.images, idx)}>
-                      <img src={img} alt="Project" className="carousel-img" />
+                  {project.images.map((img, idx) => (
+                    <div key={idx} onClick={() => openLightbox(project.images, idx)} style={{ cursor: 'zoom-in' }}>
+                      <img
+                        src={img}
+                        alt={project.title}
+                        style={{
+                          width: '100%',
+                          height: project.featured && i === 0 ? '280px' : '200px',
+                          objectFit: 'cover',
+                          display: 'block',
+                        }}
+                      />
                     </div>
                   ))}
                 </Slider>
 
-                {hovered === i && (
-                  <div className="project-overlay">
-                    <a href={p.demo} style={bubbleStyle} target="_blank" rel="noopener noreferrer"><ExternalLink size={20} /></a>
-                    <a href={p.github} style={bubbleStyle} target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
-                    <div style={bubbleStyle} onClick={() => openViewer(p.images, 0)}><ImageIcon size={20} /></div>
+                {/* CTAR-style number overlay */}
+                <div style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.4rem',
+                  fontWeight: 700,
+                  color: 'rgba(255,255,255,0.15)',
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1,
+                  zIndex: 5,
+                  pointerEvents: 'none',
+                }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+
+                {project.featured && (
+                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 10 }}>
+                    <span className="tag" style={{ background: 'rgba(123,140,255,0.25)', borderColor: 'rgba(123,140,255,0.5)', fontSize: '0.65rem' }}>
+                      ★ FEATURED
+                    </span>
                   </div>
                 )}
               </div>
 
-              <div className="project-content">
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <div className="project-tech">
-                  {p.technologies.map((tech, ti) => (
-                    <span key={ti} className="tech-tag">{tech}</span>
+              {/* Content */}
+              <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.1rem',
+                  fontWeight: 700,
+                  marginBottom: '0.5rem',
+                  letterSpacing: '-0.01em',
+                  color: 'var(--text)',
+                }}>
+                  {project.title}
+                </h3>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1rem', flex: 1 }}>
+                  {project.detail}
+                </p>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
+                  {project.technologies.map(tech => (
+                    <span key={tech} className="tag" style={{ fontSize: '0.68rem' }}>{tech}</span>
                   ))}
                 </div>
-                <div className="project-buttons">
-                  <a href={p.demo} style={btnStyle} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16}/> Live Demo
+
+                {/* CTAR-style action row */}
+                <div style={{ display: 'flex', gap: '0.6rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+                    style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem', fontSize: '0.8rem', gap: '0.4rem' }}>
+                    <ExternalLink size={13} /> Live Demo
                   </a>
-                  <a href={p.github} style={btnStyle} target="_blank" rel="noopener noreferrer">
-                    <Github size={16}/> View Code
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline"
+                    style={{ padding: '0.55rem 0.9rem', fontSize: '0.8rem' }}>
+                    <Github size={13} />
                   </a>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* View all — CTAR arrow style */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          style={{ textAlign: 'center', marginTop: '3rem' }}
+        >
+          <a href="https://github.com/Brendanmebson" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+            View All on GitHub <ArrowUpRight size={15} />
+          </a>
+        </motion.div>
       </div>
 
-      {isOpen && (
+      {lightboxOpen && (
         <Lightbox
-          open={isOpen}
-          close={() => setIsOpen(false)}
-          index={photoIndex}
-          slides={images}
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          index={lightboxIdx}
+          slides={lightboxImages}
         />
       )}
 
-      <style jsx>{`
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
+      <style>{`
+        .project-card { transition: transform 0.3s ease; }
+        .project-card:hover { transform: translateY(-4px); }
+        @media (max-width: 900px) {
+          .projects-header-grid { grid-template-columns: 1fr !important; }
+          .projects-grid { grid-template-columns: 1fr 1fr !important; }
+          .projects-grid > *:first-child { grid-column: span 2; }
         }
-        .project-card {
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(10px);
-          border-radius: 20px;
-          overflow: hidden;
-          transition: transform 0.3s ease;
-        }
-        .project-card:hover {
-          transform: translateY(-6px);
-        }
-        .project-image {
-          position: relative;
-        }
-        .carousel-img {
-          width: 100%;
-          height: 220px;
-          object-fit: cover;
-          cursor: pointer;
-        }
-        .project-overlay {
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: rgba(0,0,0,0.75);
-          display: flex; align-items: center; justify-content: center;
-          gap: 1rem; z-index: 10;
-        }
-        .project-content {
-          padding: 1.5rem;
-        }
-        .project-content h3 {
-          color: #667eea;
-          margin-bottom: 0.5rem;
-        }
-        .project-content p {
-          opacity: 0.9; margin-bottom: 1rem;
-        }
-        .project-tech {
-          display: flex; flex-wrap: wrap; gap: 0.5rem;
-          margin-bottom: 1rem;
-        }
-        .tech-tag {
-          background: rgba(255,255,255,0.1);
-          padding: 0.3rem 0.7rem;
-          border-radius: 9999px; font-size: 0.75rem; color: #fff;
-        }
-        .project-buttons {
-          display: flex; gap: 1rem; flex-wrap: wrap;
-        }
-        .section-title {
-          font-size: 2.5rem;
-          text-align: center;
-          background: linear-gradient(45deg,#667eea,#764ba2);
-          background-clip: text; -webkit-background-clip: text; color: transparent;
-          margin-bottom: 0.5rem;
-        }
-        .section-subtitle {
-          text-align: center; font-size: 1.1rem; color: #ccc;
-        }
-        @media (max-width: 768px) {
-          .carousel-img { height: 180px; }
-          .project-buttons { flex-direction: column; gap: 0.5rem; }
+        @media (max-width: 600px) {
+          .projects-grid { grid-template-columns: 1fr !important; }
+          .projects-grid > *:first-child { grid-column: span 1; }
         }
       `}</style>
     </section>
