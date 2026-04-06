@@ -1,224 +1,187 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Smartphone, Server, Layout, Gamepad2, Languages, GraduationCap, Briefcase, Users } from 'lucide-react';
+import { GraduationCap, Briefcase, Users } from 'lucide-react';
 
 const services = [
-  { icon: <Layout size={22} />, title: 'Frontend', desc: 'Pixel-perfect UIs with React, TypeScript, and modern CSS.' },
-  { icon: <Server size={22} />, title: 'Backend', desc: 'Scalable APIs with Node.js, Express, and cloud databases.' },
-  { icon: <Smartphone size={22} />, title: 'Mobile', desc: 'Cross-platform apps with React Native and Kotlin.' },
-  { icon: <Code2 size={22} />, title: 'Full-Stack', desc: 'End-to-end ownership from schema design to deployment.' },
+  { num: '01', title: 'Frontend', desc: 'React, TypeScript, and modern CSS. Pixel-perfect at every breakpoint.' },
+  { num: '02', title: 'Backend', desc: 'Scalable REST APIs with Node.js, Express, and cloud databases.' },
+  { num: '03', title: 'Mobile', desc: 'Cross-platform apps with React Native and native Kotlin.' },
+  { num: '04', title: 'Full-Stack', desc: 'End-to-end ownership: schema design to deployment.' },
 ];
 
 const timeline = [
-  { icon: <GraduationCap size={16} />, period: '2021 – 2025', title: 'BSc Software Engineering', org: 'Babcock University', desc: 'Active in GDSC, Coding Club, and React Developers Club.' },
-  { icon: <Briefcase size={16} />, period: '2023', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Built web applications with React and Tailwind CSS.' },
-  { icon: <Users size={16} />, period: 'Ongoing', title: 'Freelance React Developer', org: 'Independent', desc: 'Delivering custom web and mobile solutions for diverse clients.' },
+  { icon: <GraduationCap size={14} />, period: '2021 – 2025', title: 'BSc Software Engineering', org: 'Babcock University', desc: 'GDSC, Coding Club, React Developers Club.' },
+  { icon: <Briefcase size={14} />, period: '2023', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Built production web apps with React and Tailwind CSS.' },
+  { icon: <Users size={14} />, period: 'Ongoing', title: 'Freelance React Developer', org: 'Independent', desc: 'Custom web and mobile solutions for diverse clients worldwide.' },
 ];
 
 const hobbies = ['Gaming', 'Guitar', 'Music', 'Photography', 'AR/VR', 'Books', 'Football', 'Machine Learning', 'Plants', 'Startups', 'UI/UX', 'Board Games'];
-const languages = ['English — Fluent', 'Igbo — Fluent', 'Yoruba — Basic', 'French — Beginner'];
+const languages = [
+  { name: 'English', level: 'Fluent' },
+  { name: 'Igbo', level: 'Fluent' },
+  { name: 'Yoruba', level: 'Basic' },
+  { name: 'French', level: 'Beginner' },
+];
+
+const fadeIn = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+});
 
 const About = () => {
   return (
-    <section id="about" className="section">
-      <div className="container">
+    <section id="about" style={{ borderBottom: '1px solid var(--line)' }}>
+      {/* Section label bar */}
+      <div style={{ borderBottom: '1px solid var(--line)' }}>
+        <div className="wrap" style={{ padding: '0.6rem var(--pad)', display: 'flex', justifyContent: 'space-between' }}>
+          <span className="mono-label">02 — About</span>
+          <span className="mono-label">Software Engineer</span>
+        </div>
+      </div>
 
-        {/* CTAR-style section label */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{ marginBottom: '5rem' }}
-        >
-          {/* Top border label — CTAR */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem',
-            marginBottom: '2rem',
-            paddingBottom: '1rem',
-            borderBottom: '1px solid var(--border)',
+      <div className="wrap" style={{ padding: 'clamp(3rem, 8vw, 6rem) var(--pad)' }}>
+
+        {/* Headline */}
+        <motion.div {...fadeIn()} style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
+            fontWeight: 900,
+            letterSpacing: '-0.03em',
+            lineHeight: 0.95,
+            maxWidth: '700px',
           }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--text-dim)' }}>
-              02 / ABOUT
-            </span>
-            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--border), transparent)' }} />
-          </div>
-
-          {/* Big editorial headline — CTAR sizing */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'end' }} className="about-header-grid">
-            <h2 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.8rem, 6vw, 5rem)',
-              fontWeight: 700,
-              lineHeight: 0.95,
-              letterSpacing: '-0.03em',
-              margin: 0,
-            }}>
-              Building things<br />
-              that <span style={{
-                background: 'var(--gradient-text)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>matter_</span>
-            </h2>
-            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, margin: 0 }}>
-              A Software Engineering graduate deeply passionate about creating elegant solutions
-              at the intersection of great engineering and thoughtful design.
-            </p>
-          </div>
+            Building things<br />
+            <span style={{ fontStyle: 'italic', fontWeight: 300 }}>that last.</span>
+          </h2>
         </motion.div>
 
-        {/* Services — 4-col grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', marginBottom: '5rem' }} className="services-grid">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              style={{
-                background: 'var(--bg)',
-                padding: '2rem 1.5rem',
-                position: 'relative',
-                overflow: 'hidden',
-                transition: 'background 0.3s ease',
-                cursor: 'default',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-glass)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'var(--bg)'}
-            >
-              {/* CTAR-style number */}
-              <div style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '3.5rem',
-                fontWeight: 700,
-                color: 'var(--border)',
-                lineHeight: 1,
-                marginBottom: '1.25rem',
-                letterSpacing: '-0.04em',
-              }}>
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <div style={{
-                width: '36px', height: '36px',
-                borderRadius: 'var(--radius-sm)',
-                background: 'rgba(123,140,255,0.1)',
-                border: '1px solid rgba(123,140,255,0.2)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--primary)',
-                marginBottom: '1rem',
-              }}>
-                {s.icon}
-              </div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
-                {s.title}
-              </h4>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{s.desc}</p>
-            </motion.div>
-          ))}
+        {/* Intro paragraph + services */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0',
+          borderTop: '1px solid var(--line)',
+          marginBottom: 'clamp(3rem, 6vw, 5rem)',
+        }} className="about-top-grid">
+          <div style={{ paddingTop: '2rem', paddingRight: '3rem', borderRight: '1px solid var(--line)' }}>
+            <motion.p {...fadeIn(0.1)} style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
+              I'm a Software Engineer based remotely, passionate about the intersection of engineering and design. I build across the full stack — from database design to the last pixel on screen.
+            </motion.p>
+            <motion.p {...fadeIn(0.15)} style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>
+              A graduate of Babcock University in Software Engineering, I now deliver high-impact digital solutions for diverse clients worldwide.
+            </motion.p>
+
+          </div>
+
+          {/* Services */}
+          <div style={{ paddingTop: '2rem', paddingLeft: '3rem' }}>
+            {services.map((s, i) => (
+              <motion.div
+                key={s.title}
+                {...fadeIn(i * 0.07)}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'auto 1fr',
+                  gap: '1rem',
+                  alignItems: 'start',
+                  paddingBottom: '1.25rem',
+                  marginBottom: '1.25rem',
+                  borderBottom: i < services.length - 1 ? '1px solid var(--line)' : 'none',
+                }}
+              >
+                <span className="mono-label" style={{ paddingTop: '0.15rem' }}>{s.num}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.2rem' }}>
+                    {s.title}
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-2)', lineHeight: 1.6 }}>{s.desc}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Timeline + Extras */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }} className="about-lower-grid">
+        {/* Timeline + Interests */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '3rem',
+          borderTop: '1px solid var(--line)',
+          paddingTop: '3rem',
+        }} className="about-lower-grid">
 
           {/* Timeline */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--text-dim)', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ width: '20px', height: '1px', background: 'var(--primary)', display: 'inline-block' }} />
-              TIMELINE
-            </div>
-
+          <motion.div {...fadeIn(0.1)}>
+            <div className="mono-label" style={{ marginBottom: '2rem' }}>Experience & Education</div>
             {timeline.map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: '1.25rem', position: 'relative' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '2px' }}>
                   <div style={{
-                    width: '32px', height: '32px', borderRadius: '50%',
-                    background: 'rgba(123,140,255,0.1)',
-                    border: '1px solid rgba(123,140,255,0.25)',
+                    width: '28px', height: '28px', flexShrink: 0,
+                    border: '1px solid var(--line-bright)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--primary)', flexShrink: 0,
+                    color: 'var(--accent)',
                   }}>
                     {item.icon}
                   </div>
                   {i < timeline.length - 1 && (
-                    <div style={{ width: '1px', flex: 1, background: 'linear-gradient(to bottom, rgba(123,140,255,0.2), transparent)', minHeight: '36px' }} />
+                    <div style={{ width: '1px', flex: 1, background: 'var(--line)', minHeight: '28px', marginTop: '4px' }} />
                   )}
                 </div>
-                <div style={{ paddingBottom: '2rem' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--primary)', letterSpacing: '0.06em', display: 'block', marginBottom: '0.2rem' }}>
-                    {item.period}
-                  </span>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.2rem', letterSpacing: '-0.01em' }}>{item.title}</h4>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--accent)', fontFamily: 'var(--font-mono)', display: 'block', marginBottom: '0.4rem' }}>{item.org}</span>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{item.desc}</p>
+                <div style={{ paddingBottom: '0.5rem' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent)', marginBottom: '0.3rem' }}>{item.period}</div>
+                  <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.15rem' }}>{item.title}</div>
+                  <div className="mono-label" style={{ color: 'var(--text-2)', marginBottom: '0.4rem', letterSpacing: '0.04em', textTransform: 'none' }}>{item.org}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-3)', lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}
           </motion.div>
 
           {/* Interests + Languages */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
-          >
-            <div className="glass-card" style={{ padding: '1.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-                <Gamepad2 size={18} color="var(--primary)" />
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600 }}>Interests</span>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {hobbies.map(h => <span key={h} className="tag">{h}</span>)}
+          <motion.div {...fadeIn(0.2)} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div>
+              <div className="mono-label" style={{ marginBottom: '1rem' }}>Interests</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                {hobbies.map(h => (
+                  <span key={h} className="tag">{h}</span>
+                ))}
               </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '1.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-                <Languages size={18} color="var(--primary)" />
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600 }}>Languages</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {languages.map(lang => {
-                  const [name, level] = lang.split(' — ');
-                  return (
-                    <div key={lang} style={{
-                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                      padding: '0.55rem 0.9rem',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'rgba(123,140,255,0.05)',
-                      border: '1px solid rgba(123,140,255,0.1)',
-                    }}>
-                      <span style={{ fontSize: '0.86rem', fontWeight: 500 }}>{name}</span>
-                      <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}>{level}</span>
-                    </div>
-                  );
-                })}
-              </div>
+            <div style={{ borderTop: '1px solid var(--line)', paddingTop: '2rem' }}>
+              <div className="mono-label" style={{ marginBottom: '1rem' }}>Languages</div>
+              {languages.map((lang, i) => (
+                <div key={lang.name} style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '0.6rem 0',
+                  borderBottom: i < languages.length - 1 ? '1px solid var(--line)' : 'none',
+                }}>
+                  <span style={{ fontSize: '0.88rem', fontWeight: 600 }}>{lang.name}</span>
+                  <span className="mono-label" style={{
+                    color: lang.level === 'Fluent' ? 'var(--accent)' : 'var(--text-3)',
+                    letterSpacing: '0.06em',
+                  }}>
+                    {lang.level}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
-
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          .about-header-grid { grid-template-columns: 1fr !important; }
-          .services-grid { grid-template-columns: 1fr 1fr !important; }
-          .about-lower-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .services-grid { grid-template-columns: 1fr !important; }
+          .about-top-grid { grid-template-columns: 1fr !important; }
+          .about-top-grid > *:first-child { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid var(--line); padding-bottom: 2rem; }
+          .about-top-grid > *:last-child { padding-left: 0 !important; padding-top: 2rem; }
+          .about-lower-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
         }
       `}</style>
     </section>

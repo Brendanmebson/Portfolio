@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Database } from 'lucide-react';
-import {
-  FaReact, FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaGithub,
-  FaPython, FaJava, FaDocker, FaCloud, FaCode, FaGitAlt,
-  FaMobileAlt, FaVuejs, FaWordpress, FaSlack,
-} from 'react-icons/fa';
-import {
-  SiTypescript, SiTailwindcss, SiMongodb, SiExpress, SiSupabase,
-  SiPhp, SiFigma, SiKotlin, SiCplusplus, SiNextdotjs, SiAngular,
-  SiMui, SiPostgresql, SiFirebase, SiVercel, SiNotion, SiCanva,
-  SiSourcetree,
-} from 'react-icons/si';
-import { TbBrandVscode } from 'react-icons/tb';
+import { FaReact, FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaGithub, FaPython, FaJava, FaDocker, FaCloud, FaCode, FaGitAlt, FaMobileAlt } from 'react-icons/fa';
+import { SiTypescript, SiTailwindcss, SiMongodb, SiExpress, SiSupabase, SiPhp, SiFigma, SiKotlin, SiCplusplus } from 'react-icons/si';
 
 const categories = [
   {
@@ -22,11 +12,7 @@ const categories = [
       { name: 'React', icon: <FaReact />, color: '#61DBFB' },
       { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
       { name: 'JavaScript', icon: <FaJs />, color: '#F7DF1E' },
-      { name: 'Next.js', icon: <SiNextdotjs />, color: '#ccc' },
-      { name: 'Vue.js', icon: <FaVuejs />, color: '#42b883' },
-      { name: 'Angular', icon: <SiAngular />, color: '#DD0031' },
       { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#38B2AC' },
-      { name: 'MUI', icon: <SiMui />, color: '#007FFF' },
       { name: 'HTML5', icon: <FaHtml5 />, color: '#E34F26' },
       { name: 'CSS3', icon: <FaCss3Alt />, color: '#1572B6' },
     ],
@@ -38,9 +24,7 @@ const categories = [
       { name: 'Node.js', icon: <FaNodeJs />, color: '#339933' },
       { name: 'Express.js', icon: <SiExpress />, color: '#ccc' },
       { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
-      { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#336791' },
       { name: 'Supabase', icon: <SiSupabase />, color: '#3FCF8E' },
-      { name: 'Firebase', icon: <SiFirebase />, color: '#FFCA28' },
       { name: 'PHP', icon: <SiPhp />, color: '#777BB4' },
       { name: 'SQL', icon: <Database size={28} />, color: '#f97316' },
     ],
@@ -61,9 +45,6 @@ const categories = [
       { name: 'Python', icon: <FaPython />, color: '#3776AB' },
       { name: 'Java', icon: <FaJava />, color: '#007396' },
       { name: 'C/C++', icon: <SiCplusplus />, color: '#00599C' },
-      { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
-      { name: 'JavaScript', icon: <FaJs />, color: '#F7DF1E' },
-      { name: 'PHP', icon: <SiPhp />, color: '#777BB4' },
     ],
   },
   {
@@ -71,17 +52,11 @@ const categories = [
     label: 'Tools',
     skills: [
       { name: 'GitHub', icon: <FaGithub />, color: '#ccc' },
-      { name: 'Git', icon: <FaGitAlt />, color: '#F1502F' },
-      { name: 'VS Code', icon: <TbBrandVscode />, color: '#007ACC' },
       { name: 'Figma', icon: <SiFigma />, color: '#F24E1E' },
+      { name: 'Git', icon: <FaGitAlt />, color: '#F1502F' },
+      { name: 'VS Code', icon: <FaCode />, color: '#007ACC' },
       { name: 'Docker', icon: <FaDocker />, color: '#2496ED' },
-      { name: 'Vercel', icon: <SiVercel />, color: '#ccc' },
       { name: 'AWS', icon: <FaCloud />, color: '#FF9900' },
-      { name: 'Notion', icon: <SiNotion />, color: '#ccc' },
-      { name: 'Slack', icon: <FaSlack />, color: '#4A154B' },
-      { name: 'Canva', icon: <SiCanva />, color: '#00C4CC' },
-      { name: 'WordPress', icon: <FaWordpress />, color: '#21759B' },
-      { name: 'Postman', icon: <FaCode />, color: '#FF6C37' },
     ],
   },
 ];
@@ -130,8 +105,6 @@ const Skills = () => {
           borderBottom: '1px solid var(--line)',
           marginBottom: '3rem',
           overflowX: 'auto',
-          msOverflowStyle: 'none',
-          scrollbarWidth: 'none',
         }}>
           {categories.map((cat, i) => (
             <button
@@ -168,7 +141,7 @@ const Skills = () => {
             transition={{ duration: 0.3 }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
               gap: '1px',
               background: 'var(--line)',
               border: '1px solid var(--line)',
@@ -179,7 +152,7 @@ const Skills = () => {
                 key={skill.name}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.04 }}
+                transition={{ delay: i * 0.05 }}
                 style={{
                   background: 'var(--bg)',
                   padding: '2rem 1.25rem',
@@ -190,34 +163,21 @@ const Skills = () => {
                   cursor: 'default',
                   transition: 'background 0.2s',
                 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.background = 'var(--bg-2)';
-                  // Accent tint on the icon
-                  const icon = e.currentTarget.querySelector('.skill-icon');
-                  if (icon) icon.style.filter = `drop-shadow(0 0 8px ${skill.color}55)`;
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.background = 'var(--bg)';
-                  const icon = e.currentTarget.querySelector('.skill-icon');
-                  if (icon) icon.style.filter = 'none';
-                }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-2)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg)'; }}
               >
-                <div
-                  className="skill-icon"
-                  style={{
-                    fontSize: '2rem',
-                    color: skill.color,
-                    lineHeight: 1,
-                    opacity: 0.85,
-                    transition: 'filter 0.25s',
-                  }}
-                >
+                <div style={{
+                  fontSize: '2rem',
+                  color: skill.color,
+                  lineHeight: 1,
+                  opacity: 0.9,
+                }}>
                   {skill.icon}
                 </div>
                 <span style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.62rem',
-                  letterSpacing: '0.06em',
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.08em',
                   color: 'var(--text-2)',
                   textAlign: 'center',
                 }}>
@@ -243,7 +203,7 @@ const Skills = () => {
           className="stats-grid"
         >
           {[
-            { n: '30+', l: 'Technologies' },
+            { n: '20+', l: 'Technologies' },
             { n: '4+', l: 'Years Experience' },
             { n: '3', l: 'Platforms' },
             { n: '100%', l: 'Passion' },
@@ -272,7 +232,6 @@ const Skills = () => {
       </div>
 
       <style>{`
-        .skills-tabs::-webkit-scrollbar { display: none; }
         @media (max-width: 600px) {
           .stats-grid { grid-template-columns: 1fr 1fr !important; }
         }

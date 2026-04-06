@@ -1,3 +1,4 @@
+/* App.css — intentionally minimal. All design tokens live in theme.js globalStyles. */
 
 * {
   margin: 0;
@@ -5,117 +6,29 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  line-height: 1.6;
-  color: #ffffff;
-  background: linear-gradient(135deg,rgb(226, 227, 231) 0%, #1c1227 100%);
-  min-height: 100vh;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.App {
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Container styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Section styles */
-.section {
-  padding: 40px 0;
-  position: relative;
-}
-
-/* Button styles */
-.btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
+a {
+  color: inherit;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+button {
+  font-family: inherit;
 }
 
-.btn-outline {
-  background: transparent;
-  border: 2px solid #667eea;
-  color: #667eea;
+/* Slick carousel dot overrides to match the dark theme */
+.slick-dots li button:before {
+  color: var(--text-3) !important;
+  font-size: 6px !important;
 }
-
-.btn-outline:hover {
-  background: #667eea;
-  color: white;
+.slick-dots li.slick-active button:before {
+  color: var(--accent) !important;
 }
-
-/* Card styles */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Grid styles */
-.grid {
-  display: grid;
-  gap: 30px;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-/* Text styles */
-.text-gradient {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-
-  .section {
-    padding: 50px 0;
-  }
-
-  .grid-2,
-  .grid-3 {
-    grid-template-columns: 1fr;
-  }
+.slick-dots {
+  bottom: 8px !important;
 }

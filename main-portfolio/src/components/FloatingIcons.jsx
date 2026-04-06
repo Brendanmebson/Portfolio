@@ -1,34 +1,49 @@
 import React, { useEffect, useRef } from 'react';
 import {
   FaReact, FaJs, FaNodeJs, FaPython, FaJava, FaGitAlt, FaDocker,
-  FaCss3Alt, FaHtml5, FaCloud
+  FaCss3Alt, FaHtml5, FaCloud, FaVuejs, FaWordpress, FaSlack, FaGithub,
 } from 'react-icons/fa';
 import {
   SiTypescript, SiMongodb, SiFirebase, SiPhp, SiFigma,
-  SiKotlin, SiCplusplus, SiTailwindcss, SiExpress, SiSupabase
+  SiKotlin, SiCplusplus, SiTailwindcss, SiExpress, SiSupabase,
+  SiNextdotjs, SiAngular, SiMui, SiPostgresql, SiVercel,
+  SiNotion, SiCanva,
 } from 'react-icons/si';
+import { TbBrandVscode } from 'react-icons/tb';
 
 const ICONS = [
-  { icon: <FaReact />, size: 72 },
-  { icon: <FaJs />, size: 68 },
-  { icon: <SiTypescript />, size: 70 },
-  { icon: <FaNodeJs />, size: 74 },
-  { icon: <FaPython />, size: 68 },
-  { icon: <FaJava />, size: 72 },
-  { icon: <SiMongodb />, size: 70 },
-  { icon: <FaGitAlt />, size: 68 },
-  { icon: <FaCss3Alt />, size: 70 },
-  { icon: <FaHtml5 />, size: 72 },
-  { icon: <SiFirebase />, size: 73 },
-  { icon: <FaCloud />, size: 75 },
-  { icon: <FaDocker />, size: 72 },
-  { icon: <SiKotlin />, size: 70 },
-  { icon: <SiCplusplus />, size: 68 },
-  { icon: <SiPhp />, size: 66 },
-  { icon: <SiFigma />, size: 68 },
-  { icon: <SiTailwindcss />, size: 72 },
-  { icon: <SiExpress />, size: 74 },
-  { icon: <SiSupabase />, size: 70 },
+  { icon: <FaReact />, size: 64 },
+  { icon: <FaJs />, size: 60 },
+  { icon: <SiTypescript />, size: 62 },
+  { icon: <FaNodeJs />, size: 66 },
+  { icon: <FaPython />, size: 60 },
+  { icon: <FaJava />, size: 64 },
+  { icon: <SiMongodb />, size: 62 },
+  { icon: <FaGitAlt />, size: 60 },
+  { icon: <FaCss3Alt />, size: 62 },
+  { icon: <FaHtml5 />, size: 64 },
+  { icon: <SiFirebase />, size: 65 },
+  { icon: <FaCloud />, size: 66 },
+  { icon: <FaDocker />, size: 64 },
+  { icon: <SiKotlin />, size: 62 },
+  { icon: <SiCplusplus />, size: 60 },
+  { icon: <SiPhp />, size: 58 },
+  { icon: <SiFigma />, size: 60 },
+  { icon: <SiTailwindcss />, size: 64 },
+  { icon: <SiExpress />, size: 66 },
+  { icon: <SiSupabase />, size: 62 },
+  { icon: <SiNextdotjs />, size: 64 },
+  { icon: <SiAngular />, size: 62 },
+  { icon: <SiMui />, size: 62 },
+  { icon: <SiPostgresql />, size: 64 },
+  { icon: <FaVuejs />, size: 62 },
+  { icon: <TbBrandVscode />, size: 62 },
+  { icon: <SiNotion />, size: 60 },
+  { icon: <FaSlack />, size: 60 },
+  { icon: <FaGithub />, size: 62 },
+  { icon: <SiVercel />, size: 60 },
+  { icon: <SiCanva />, size: 60 },
+  { icon: <FaWordpress />, size: 62 },
 ];
 
 const FloatingIcons = () => {
@@ -41,14 +56,13 @@ const FloatingIcons = () => {
     const height = window.innerHeight;
 
     iconRefs.current.forEach((ref, i) => {
-      if (ref) {
-        ref.style.left = `${Math.random() * (width - ICONS[i].size)}px`;
-        ref.style.top = `${Math.random() * (height - ICONS[i].size)}px`;
-        velocities.current[i] = {
-          dx: (Math.random() - 0.5) * 0.4,
-          dy: (Math.random() - 0.5) * 0.4,
-        };
-      }
+      if (!ref) return;
+      ref.style.left = `${Math.random() * (width - ICONS[i].size)}px`;
+      ref.style.top = `${Math.random() * (height - ICONS[i].size)}px`;
+      velocities.current[i] = {
+        dx: (Math.random() - 0.5) * 0.35,
+        dy: (Math.random() - 0.5) * 0.35,
+      };
     });
 
     const animate = () => {
@@ -71,11 +85,11 @@ const FloatingIcons = () => {
             const ddx = x - bx;
             const ddy = y - by;
             const dist = Math.sqrt(ddx * ddx + ddy * ddy);
-            const minDist = (ICONS[i].size + ICONS[j].size) / 1.4;
+            const minDist = (ICONS[i].size + ICONS[j].size) / 1.5;
             if (dist < minDist && dist > 0) {
               const angle = Math.atan2(ddy, ddx);
-              x += Math.cos(angle) * 0.6;
-              y += Math.sin(angle) * 0.6;
+              x += Math.cos(angle) * 0.5;
+              y += Math.sin(angle) * 0.5;
             }
           }
         });
@@ -106,9 +120,18 @@ const FloatingIcons = () => {
           style={{
             position: 'absolute',
             fontSize: `${item.size}px`,
-            color: 'rgba(123, 140, 255, 0.025)',
+            /*
+              Outlined effect:
+              - color: transparent → hides the filled body of the icon
+              - WebkitTextStroke: draws a thin yellow outline around the icon paths
+              - filter drop-shadow: adds a barely-there glow matching the accent
+            */
+            color: 'transparent',
+            WebkitTextStroke: '1.2px rgba(232, 255, 71, 0.13)',
+            filter: 'drop-shadow(0 0 4px rgba(232, 255, 71, 0.05))',
             pointerEvents: 'none',
             userSelect: 'none',
+            lineHeight: 1,
           }}
         >
           {item.icon}

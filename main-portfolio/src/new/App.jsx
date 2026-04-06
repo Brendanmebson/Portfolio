@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { globalStyles } from './components/theme';
-import FloatingIcons from './components/FloatingIcons';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -19,7 +18,6 @@ const App = () => {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg)' }}>
-      <FloatingIcons />
       <Header />
       <main>
         <Hero />
