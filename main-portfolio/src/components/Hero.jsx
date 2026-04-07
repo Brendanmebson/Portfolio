@@ -235,6 +235,7 @@ const Hero = () => {
         }
         @media (max-width: 768px) {
           .hero-photo-col { display: none !important; }
+          .wrap > div:first-child { border-right: none !important; padding-right: 0 !important; }
         }
       `}</style>
     </section>

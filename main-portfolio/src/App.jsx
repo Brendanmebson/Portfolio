@@ -18,7 +18,7 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg)' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg)', overflowX: 'hidden' }}>
       <FloatingIcons />
       <Header />
       <main>

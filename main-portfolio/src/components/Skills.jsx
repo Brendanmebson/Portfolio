@@ -273,8 +273,12 @@ const Skills = () => {
 
       <style>{`
         .skills-tabs::-webkit-scrollbar { display: none; }
-        @media (max-width: 600px) {
-          .stats-grid { grid-template-columns: 1fr 1fr !important; }
+        @media (max-width: 768px) {
+          .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 480px) {
+          .stats-grid { grid-template-columns: 1fr !important; }
+          .stats-grid > div { padding: 1.5rem !important; }
         }
       `}</style>
     </section>

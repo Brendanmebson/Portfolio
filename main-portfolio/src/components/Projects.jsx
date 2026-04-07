@@ -429,9 +429,14 @@ const Projects = () => {
           .featured-inner > *:last-child { border-left: none !important; border-top: 1px solid var(--line); }
           .projects-grid { grid-template-columns: 1fr 1fr !important; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
           .projects-grid { grid-template-columns: 1fr !important; }
           .featured-inner img { height: 220px !important; }
+          .wrap { padding: 2rem 1.25rem !important; }
+        }
+        @media (max-width: 400px) {
+          .featured-inner h3 { fontSize: 1.5rem !important; }
+          .projects-grid article { padding: 1rem !important; }
         }
       `}</style>
     </section>
