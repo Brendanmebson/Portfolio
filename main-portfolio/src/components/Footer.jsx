@@ -10,7 +10,7 @@ const Footer = () => {
       <div style={{ borderBottom: '1px solid var(--line)' }}>
         <div className="wrap" style={{ padding: '0.6rem var(--pad)', display: 'flex', justifyContent: 'space-between' }}>
           <span className="mono-label">© 2025 Mebuge Kamsiyochukwu Brendan</span>
-          <span className="mono-label">Lagos, NG</span>
+          <span className="mono-label">Remote</span>
         </div>
       </div>
 

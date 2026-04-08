@@ -68,11 +68,9 @@ const About = () => {
         }} className="about-top-grid">
           <div style={{ paddingTop: '2rem', paddingRight: '3rem', borderRight: '1px solid var(--line)' }}>
             <motion.p {...fadeIn(0.1)} style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              I'm a Software Engineer based remotely, passionate about the intersection of engineering and design. I build across the full stack — from database design to the last pixel on screen.
-            </motion.p>
+              I’m a Software Engineer working remotely at the intersection of engineering and design. I build full-stack systems — from scalable backend architecture to refined user interfaces. Backed by a degree in Software Engineering, I’ve delivered solutions that solve real-world problems.            </motion.p>
             <motion.p {...fadeIn(0.15)} style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>
-              A graduate of Babcock University in Software Engineering, I now deliver high-impact digital solutions for diverse clients worldwide.
-            </motion.p>
+              I prioritize performance, scalability, and clarity — building systems that are not only functional but built to last. With a strong focus on detail and user experience, I bridge the gap between engineering and design to create products that feel as good as they perform. I turn complex ideas into clean, efficient, and production-ready solutions.            </motion.p>
 
           </div>
 
