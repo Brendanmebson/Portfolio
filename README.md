@@ -1,81 +1,127 @@
 <div align="center">
-  <h1>🧳 Brendan’s Developer Portfolio Vault</h1>
-  <p><strong>A centralized repository containing tailored portfolios for different engineering roles.</strong></p>
+  <img src="./public/mkb-favicon.svg" alt="MKB Logo" width="120" />
+
+  <h1>Mebuge Kamsiyochukwu Brendan</h1>
+  <p><strong>Software Engineer building across web, mobile, and everything in between. <br />From database schema to pixel-perfect UI — end-to-end.</strong></p>
   
+  <a href="https://brendanmebson.vercel.app">www.brendanmebson.vercel.app</a>
+
+  <br /><br />
   <p>
     <b>3+ Years</b> Experience &nbsp;&middot;&nbsp; <b>20+</b> Projects &nbsp;&middot;&nbsp; <b>3</b> Platforms
   </p>
-  
-  <a href="https://codewithbrendan.vercel.app">www.codewithbrendan.vercel.app</a>
 </div>
 
 ---
 
-## 🚀 Welcome to the Vault
+## 🧑‍💻 About Me
 
-I'm **Mebuge Kamsiyochukwu Brendan**, a Software Engineer who builds full-stack systems — from scalable backend architecture to refined, pixel-perfect user interfaces. 
+> **Building things that last.**
 
-Because I build across web, mobile, and everything in between, I've structured my projects into specialized portfolios. Each folder in this repository is tailored to a specific discipline, highlighting the most relevant skills, tools, and projects for that role.
+I’m a Software Engineer working remotely at the intersection of engineering and design. I build full-stack systems — from scalable backend architecture to refined user interfaces. Backed by a degree in Software Engineering, I’ve delivered solutions that solve real-world problems. 
 
-### 📂 Repository Structure
+I prioritize performance, scalability, and clarity — building systems that are not only functional but built to last. With a strong focus on detail and user experience, I bridge the gap between engineering and design to create products that feel as good as they perform. I turn complex ideas into clean, efficient, and production-ready solutions.
 
-```text
-portfolio-vault/
-├── 🌟 main-portfolio/       # The central hub and core entry point (React, Vite, Framer Motion)
-├── 🎨 frontend-portfolio/   # UI/UX, Animations, Responsive Design (React, Tailwind, Figma)
-├── 🧠 backend-portfolio/    # Server Logic, APIs, Databases (Node.js, Express, PostgreSQL)
-├── 🧰 fullstack-portfolio/  # Complete Apps, Auth, Data Flow (MERN Stack, TypeScript, JWT)
-└── 📱 mobile-portfolio/     # Cross-Platform Mobile Apps (React Native, Kotlin, Firebase)
-```
+### Services & Expertise
 
-Each portfolio folder contains its own dedicated codebase, custom project showcases, and a unique specific-role resume (`.pdf`).
+- **01 Frontend** — React, TypeScript, and modern CSS. Pixel-perfect at every breakpoint.
+- **02 Backend** — Scalable REST APIs with Node.js, Express, and cloud databases.
+- **03 Mobile** — Cross-platform apps with React Native and native Kotlin.
+- **04 Full-Stack** — End-to-end ownership: schema design to deployment.
 
----
+### Experience & Education
 
-## 🎨 Inside Each Portfolio
-
-For every discipline, you will find:
-- 🧑‍💻 **A tailored resume** matching the discipline
-- 📱 **A link** to its live, deployed portfolio website
-- ✅ **Curated projects** relevant to that specific stack
-- 💡 **A skills section** with deep dives into targeted technologies
-- 📬 **Contact information**
+- **BSc Software Engineering** — Babcock University (2021 – 2025)
+  *GDSC, Coding Club, React Developers Club.*
+- **Frontend Developer Intern** — IT Horizons (Zojatech) (2023)
+  *Built production web apps with React and Tailwind CSS.*
+- **Freelance React Developer** — Independent (Ongoing)
+  *Custom web and mobile solutions for diverse clients worldwide.*
 
 ---
 
-## 🛠️ Global Tech Stack
+## 🏆 Featured Projects
 
-Across all these disciplines, my core tools and technologies include:
+A curated selection from my **20+ completed projects**, spanning mobile apps, full-stack platforms, and data-driven interfaces.
 
-- **Frontend Core**: React, React Native, Next.js, Vue.js, HTML / CSS / JavaScript, TypeScript
-- **Styling**: Tailwind CSS, Vanilla CSS, Framer Motion, MUI
-- **Backend & DBs**: Node.js, Express.js, MongoDB, PostgreSQL, Supabase, Firebase, PHP, SQL
-- **Languages**: Python, Java, C/C++, TypeScript, JavaScript, PHP
-- **Tools**: GitHub, Git, VS Code, Figma, Docker, Vercel, AWS, Notion, Postman
+### 1. 🚨 Campus Safety App
+*Emergency reporting with live location sharing and security response.*
+- **Tech**: React Native, React, Supabase, Tailwind CSS
+- **Detail**: Students report emergencies, share live location, and reach campus security instantly via a mobile app paired with a React admin dashboard.
+
+### 2. 📅 Weekly Report Aggregator
+*Role-based attendance tracking and automated PDF report generation.*
+- **Tech**: MongoDB, Express.js, React, Node.js
+- **Detail**: Full-stack MERN app with role-based access, smart attendance tracking, and automated weekly PDF generation.
+
+### 3. 💬 Real-Time Messaging App
+*WebSocket-powered chat with a sleek, modern UI.*
+- **Tech**: React, TypeScript, WebSockets
+- **Detail**: Real-time chat with a polished UI supporting rooms, threads, and online presence.
+
+### 4. 🛒 E-Commerce Storefront
+*Full-featured online store with cart, checkout, and order management.*
+- **Tech**: React, Node.js, MongoDB, Paystack
+- **Detail**: Includes product filtering, cart management, Paystack payment integration, and an admin order dashboard.
+
+### 5. 🤖 AI Study Assistant
+*GPT-powered tool that summarizes notes and generates quiz questions.*
+- **Tech**: React, OpenAI API, Node.js, TypeScript
+- **Detail**: Students paste lecture notes and get AI-generated summaries, flashcards, and multiple-choice quizzes.
 
 ---
 
-## 🌐 Live Previews
+## 🛠️ Tools & Technologies
 
-You can easily preview any of these portfolios by deploying the sub-folder directly. All web portals are configured for seamless deployment on platforms like:
-- [Vercel](https://vercel.com/)
-- [GitHub Pages](https://pages.github.com/)
+**30+ Technologies | 4+ Years Experience | 3 Platforms | 100% Passion**
 
-Alternatively, just hit the live links provided inside each respective `README.md`.
+- **Frontend:** React, TypeScript, JavaScript, Next.js, Vue.js, Angular, Tailwind CSS, MUI, HTML5, CSS3
+- **Backend:** Node.js, Express.js, MongoDB, PostgreSQL, Supabase, Firebase, PHP, SQL
+- **Mobile:** React Native, Kotlin, Mobile Design
+- **Languages:** Python, Java, C/C++, TypeScript, JavaScript, PHP
+- **Tools:** GitHub, Git, VS Code, Figma, Docker, Vercel, AWS, Notion, Slack, Canva, WordPress, Postman
 
 ---
 
-## 🙌 Let's Connect
+## 📬 Contact: Let's Talk
 
-Whether you're looking for a specialist or a generalist, I'm open to freelance opportunities and full-time roles. Let's talk about your project!
+> **Got a project in mind?**
 
 - 📧 **Email**: [brendanmebson@gmail.com](mailto:brendanmebson@gmail.com)
+- 📍 **Location**: Remote
+- 🟢 **Status**: Open to freelance & full-time
 - 🔗 **LinkedIn**: [Kamsiyochukwu Mebuge](https://www.linkedin.com/in/kamsiyochukwu-mebuge-30a484258)
 - 🐙 **GitHub**: [@Brendanmebson](https://github.com/Brendanmebson)
-- 🌐 **Portfolio**: [codewithbrendan.vercel.app](https://codewithbrendan.vercel.app)
 
-*Your skills deserve to shine. Let them see what you’ve built.* 💪🚀
+Feel free to reach out to discuss an exciting new idea, offer feedback, or talk about collaborations!
+
+---
+
+## 📄 Tailored Resumes
+
+You can download my discipline-specific resumes directly from this repository:
+- [Frontend Developer Resume](./Mebuge%20Kamsiyochukwu%20Brendan%20Resume-frontend.pdf)
+- [Backend Developer Resume](./Mebuge%20Kamsiyochukwu%20Brendan%20Resume-backend.pdf)
+- [Full-Stack Developer Resume](./Mebuge%20Kamsiyochukwu%20Brendan%20Resume-fullstack.pdf)
+- [Mobile Developer Resume](./Mebuge%20Kamsiyochukwu%20Brendan%20Resume-mobile.pdf)
+
+---
+
+## 🚀 Running the Portfolio Locally
+
+This portfolio website is a React application powered by Vite. To run it locally:
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+---
 
 <div align="center">
-  <p><br>Created by <a href="https://github.com/Brendanmebson">@Brendanmebson</a></p>
+  <p>Created by <a href="https://github.com/Brendanmebson">@Brendanmebson</a></p>
 </div>
