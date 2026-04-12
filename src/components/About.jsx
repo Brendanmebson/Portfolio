@@ -12,7 +12,9 @@ const services = [
 const timeline = [
   { icon: <GraduationCap size={14} />, period: '2021 – 2025', title: 'BSc Software Engineering', org: 'Babcock University', desc: 'GDSC, Coding Club, React Developers Club.' },
   { icon: <Briefcase size={14} />, period: '2023', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Built production web apps with React and Tailwind CSS.' },
-  { icon: <Users size={14} />, period: 'Ongoing', title: 'Freelance React Developer', org: 'Independent', desc: 'Custom web and mobile solutions for diverse clients worldwide.' },
+  { icon: <Briefcase size={14} />, period: '2024', title: 'Fullstack Developer (Contract)', org: 'Rockview (HOTR)', desc: 'Developed a Church Attendance Report Aggregation web app.' },
+  { icon: <Briefcase size={14} />, period: '2024 – Present', title: 'Full-stack Developer (Intern)', org: 'Future Interns', desc: 'Given the opportunity to showcase my skills with multiple projects.' },
+  { icon: <Users size={14} />, period: '2025 – Present', title: 'Fullstack Developer', org: 'Upwork/Fiverr', desc: 'Custom web and mobile solutions for diverse clients worldwide.' },
 ];
 
 const hobbies = ['Gaming', 'Guitar', 'Music', 'Photography', 'AR/VR', 'Books', 'Football', 'Machine Learning', 'Plants', 'Startups', 'UI/UX', 'Board Games'];

@@ -9,20 +9,20 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const projects = [
   {
-    title: 'Campus Safety App',
-    description: 'Emergency reporting with live location sharing and security response.',
-    detail: 'Students report emergencies, share live location, and reach campus security instantly via a React Native mobile app paired with a React admin dashboard.',
-    technologies: ['React', 'React Native', 'Supabase', 'Tailwind CSS'],
+    title: 'Dyme',
+    description: 'State-of-the-art personal finance management platform with universal banking sync.',
+    detail: 'Dyme is a state-of-the-art personal finance management platform designed with aesthetics and performance at its core, empowering users to track their spending, manage budgets seamlessly through free universal banking sync, and gain deep financial insights via a premium, responsive interface.',
+    technologies: ['React', 'TypeScript', 'Material UI', 'Supabase', 'Node.js'],
     images: ['https://picsum.photos/800/500?random=101', 'https://picsum.photos/800/500?random=102'],
     github: 'https://github.com/Brendanmebson',
     demo: '#',
     featured: true,
   },
   {
-    title: 'Weekly Report Aggregator',
-    description: 'Role-based attendance tracking and automated PDF report generation.',
-    detail: 'Full-stack MERN app with role-based access, smart attendance tracking, and automated weekly PDF generation.',
-    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+    title: 'Apprelab Waitlist Website',
+    description: 'High-fidelity, interactive landing page for the upcoming Apprelab ecosystem.',
+    detail: 'The Apprelab Waitlist Website is a high-fidelity, interactive landing page engineered to showcase the upcoming Apprelab ecosystem and secure early registration for its future community of learners, mentors, and businesses.',
+    technologies: ['React', 'TypeScript', 'Material UI', 'Framer Motion', 'Node.js'],
     images: ['https://picsum.photos/800/500?random=103', 'https://picsum.photos/800/500?random=104'],
     github: 'https://github.com/Brendanmebson',
     demo: '#',
