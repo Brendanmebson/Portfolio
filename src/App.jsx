@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { globalStyles } from './components/theme';
 import FloatingIcons from './components/FloatingIcons';
 import Header from './components/Header';
@@ -8,6 +9,22 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AllProjectsPage from './pages/AllProjectsPage';
+
+const HomePage = () => (
+  <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg)', overflowX: 'hidden' }}>
+    <FloatingIcons />
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
+);
 
 const App = () => {
   useEffect(() => {
@@ -18,18 +35,10 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg)', overflowX: 'hidden' }}>
-      <FloatingIcons />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/projects" element={<AllProjectsPage />} />
+    </Routes>
   );
 };
 

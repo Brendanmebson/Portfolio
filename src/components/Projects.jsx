@@ -1,105 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Slider from 'react-slick';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const projects = [
-  {
-    title: 'Dyme',
-    description: 'State-of-the-art personal finance management platform with universal banking sync.',
-    detail: 'Dyme is a state-of-the-art personal finance management platform designed with aesthetics and performance at its core, empowering users to track their spending, manage budgets seamlessly through free universal banking sync, and gain deep financial insights via a premium, responsive interface.',
-    technologies: ['React', 'TypeScript', 'Material UI', 'Supabase', 'Node.js'],
-    images: ['https://picsum.photos/800/500?random=101', 'https://picsum.photos/800/500?random=102'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-    featured: true,
-  },
-  {
-    title: 'Apprelab Waitlist Website',
-    description: 'High-fidelity, interactive landing page for the upcoming Apprelab ecosystem.',
-    detail: 'The Apprelab Waitlist Website is a high-fidelity, interactive landing page engineered to showcase the upcoming Apprelab ecosystem and secure early registration for its future community of learners, mentors, and businesses.',
-    technologies: ['React', 'TypeScript', 'Material UI', 'Framer Motion', 'Node.js'],
-    images: ['https://picsum.photos/800/500?random=103', 'https://picsum.photos/800/500?random=104'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'Personal Finance Tracker',
-    description: 'Budget maker and expense tracker with real-time analytics.',
-    detail: 'Responsive React app with Chart.js visualizations, expense categorization, and budget goals.',
-    technologies: ['React', 'Tailwind CSS', 'Chart.js', 'APIs'],
-    images: ['https://picsum.photos/800/500?random=105', 'https://picsum.photos/800/500?random=106'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'Real-Time Messaging App',
-    description: 'WebSocket-powered chat with a sleek, modern UI.',
-    detail: 'Real-time chat with TypeScript, WebSockets, and a polished UI supporting rooms, threads, and online presence.',
-    technologies: ['React', 'TypeScript', 'WebSockets'],
-    images: ['https://picsum.photos/800/500?random=107', 'https://picsum.photos/800/500?random=108'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'Crypto Dashboard',
-    description: 'Live crypto portfolio monitoring with charts and alerts.',
-    detail: 'Pulls live prices from crypto APIs, renders interactive Chart.js graphs, and supports portfolio tracking.',
-    technologies: ['TypeScript', 'React', 'Crypto APIs'],
-    images: ['https://picsum.photos/800/500?random=109', 'https://picsum.photos/800/500?random=110'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'QR Code Generator',
-    description: 'Customizable QR code generation for URLs and text.',
-    detail: 'Lightweight tool generating styled, downloadable QR codes instantly. Supports custom colors, logo embedding, and vCard encoding.',
-    technologies: ['JavaScript', 'CSS', 'QR Code API'],
-    images: ['https://picsum.photos/800/500?random=112', 'https://picsum.photos/800/500?random=113'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'E-Commerce Storefront',
-    description: 'Full-featured online store with cart, checkout, and order management.',
-    detail: 'Built with React and a Node/Express backend. Includes product filtering, cart management, Paystack payment integration, and an admin order dashboard.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Paystack'],
-    images: ['https://picsum.photos/800/500?random=120', 'https://picsum.photos/800/500?random=121'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'AI Study Assistant',
-    description: 'GPT-powered tool that summarizes notes and generates quiz questions.',
-    detail: 'Students paste lecture notes and get AI-generated summaries, flashcards, and multiple-choice quizzes. Built with the OpenAI API and a React frontend.',
-    technologies: ['React', 'OpenAI API', 'Node.js', 'TypeScript'],
-    images: ['https://picsum.photos/800/500?random=130', 'https://picsum.photos/800/500?random=131'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'Hotel Booking Platform',
-    description: 'Room search, availability calendar, and full booking management.',
-    detail: 'Full-stack booking platform with real-time availability checking, date range selection, guest management, and confirmation email dispatch via Nodemailer.',
-    technologies: ['React', 'Express.js', 'PostgreSQL', 'Supabase'],
-    images: ['https://picsum.photos/800/500?random=140', 'https://picsum.photos/800/500?random=141'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
-    title: 'Workout Tracker',
-    description: 'Log workouts, track progress, and visualize fitness trends over time.',
-    detail: 'Mobile-first React Native app for logging sets, reps, and weights. Generates weekly progress charts, personal bests, and streaks synced via Firebase.',
-    technologies: ['React Native', 'Firebase', 'Kotlin', 'Chart.js'],
-    images: ['https://picsum.photos/800/500?random=150', 'https://picsum.photos/800/500?random=151'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-];
+import { projects } from '../data/projectsData';
+
+const HOMEPAGE_GRID_LIMIT = 6;
 
 const sliderSettings = {
   dots: false,
@@ -249,7 +160,7 @@ const Projects = () => {
       <div style={{ borderBottom: '1px solid var(--line)' }}>
         <div className="wrap" style={{ padding: '0.6rem var(--pad)', display: 'flex', justifyContent: 'space-between' }}>
           <span className="mono-label">03 — Work</span>
-          <span className="mono-label">{projects.length} projects</span>
+          <span className="mono-label">{Math.min(HOMEPAGE_GRID_LIMIT + 1, projects.length)} of {projects.length} projects</span>
         </div>
       </div>
 
@@ -387,7 +298,7 @@ const Projects = () => {
           boxSizing: 'border-box',
           overflow: 'hidden',
         }} className="projects-grid">
-          {rest.map((project, i) => (
+          {rest.slice(0, HOMEPAGE_GRID_LIMIT).map((project, i) => (
             <div key={project.title} style={{ background: 'var(--bg)', minWidth: 0 }}>
               <ProjectCard
                 project={project}
@@ -399,17 +310,16 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Footer link */}
+        {/* See All Projects link */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'flex-end' }}
         >
-          <a href="https://github.com/Brendanmebson" target="_blank" rel="noopener noreferrer"
-            className="btn btn-ghost">
-            View all on GitHub <ArrowUpRight size={12} />
-          </a>
+          <Link to="/projects" className="btn btn-ghost" style={{ fontSize: '0.75rem', gap: '0.5rem' }}>
+            See All Projects <ArrowRight size={13} />
+          </Link>
         </motion.div>
       </div>
 

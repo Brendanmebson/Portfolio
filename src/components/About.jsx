@@ -11,10 +11,9 @@ const services = [
 
 const timeline = [
   { icon: <GraduationCap size={14} />, period: '2021 – 2025', title: 'BSc Software Engineering', org: 'Babcock University', desc: 'GDSC, Coding Club, React Developers Club.' },
-  { icon: <Briefcase size={14} />, period: '2023', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Built production web apps with React and Tailwind CSS.' },
-  { icon: <Briefcase size={14} />, period: '2024', title: 'Fullstack Developer (Contract)', org: 'Rockview (HOTR)', desc: 'Developed a Church Attendance Report Aggregation web app.' },
-  { icon: <Briefcase size={14} />, period: '2024 – Present', title: 'Full-stack Developer (Intern)', org: 'Future Interns', desc: 'Given the opportunity to showcase my skills with multiple projects.' },
-  { icon: <Users size={14} />, period: '2025 – Present', title: 'Fullstack Developer', org: 'Upwork/Fiverr', desc: 'Custom web and mobile solutions for diverse clients worldwide.' },
+  { icon: <Briefcase size={14} />, period: 'Jan 2024 – Jul 2024', title: 'Frontend Developer Intern', org: 'IT Horizons (Zojatech)', desc: 'Developed responsive web applications and integrated real-time features in an agile team environment using React and Node.js.' },
+  { icon: <Briefcase size={14} />, period: 'Jan 2022 – Present', title: 'Freelance & Contract Full Stack Engineer', org: 'Self-Employed', desc: 'Delivered 20+ production-grade applications, designing scalable APIs and real-time systems while leading end-to-end development and deployment.' },
+  { icon: <Briefcase size={14} />, period: 'Aug 2025 – Apr 2026', title: 'Full Stack Engineer', org: 'Fifi London', desc: 'Built and managed the company\'s CMS-driven e-commerce platform, handling frontend, backend, performance optimization, and deployments.' },
 ];
 
 const hobbies = ['Gaming', 'Guitar', 'Music', 'Photography', 'AR/VR', 'Books', 'Football', 'Machine Learning', 'Plants', 'Startups', 'UI/UX', 'Board Games'];
