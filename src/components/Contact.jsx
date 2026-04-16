@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const formRef = useRef();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSending(false);
-    setSent(true);
-    setForm({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setSent(false), 4000);
+    setError(false);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+      setSent(true);
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSent(false), 5000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setError(true);
+      setTimeout(() => setError(false), 5000);
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle = {
@@ -31,6 +48,7 @@ const Contact = () => {
     transition: 'border-color 0.2s',
     borderRadius: '1px',
     appearance: 'none',
+    boxSizing: 'border-box',
   };
 
   return (
@@ -162,7 +180,7 @@ const Contact = () => {
           >
             <div className="mono-label" style={{ marginBottom: '1.5rem' }}>Send a message</div>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
                 <div>
                   <div className="mono-label" style={{ marginBottom: '0.4rem' }}>Name</div>
@@ -197,7 +215,21 @@ const Contact = () => {
                   onBlur={e => { e.currentTarget.style.borderColor = 'var(--line)'; }} />
               </div>
 
-              <button type="submit" disabled={sending} className="btn btn-solid"
+              {/* Status messages */}
+              {error && (
+                <div style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: '#ff6b6b',
+                  padding: '0.6rem 0.8rem',
+                  border: '1px solid rgba(255,107,107,0.3)',
+                  background: 'rgba(255,107,107,0.05)',
+                }}>
+                  ✕ Something went wrong. Please try again or email me directly.
+                </div>
+              )}
+
+              <button type="submit" disabled={sending || sent} className="btn btn-solid"
                 style={{
                   width: '100%',
                   justifyContent: 'center',
@@ -218,7 +250,7 @@ const Contact = () => {
                     Sending...
                   </>
                 ) : sent ? (
-                  '✓ Message sent!'
+                  '✓ Message sent — I\'ll be in touch!'
                 ) : (
                   <>Send Message <Send size={12} /></>
                 )}
