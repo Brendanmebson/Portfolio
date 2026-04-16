@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import TrustTicker from './components/TrustTicker';
 import AllProjectsPage from './pages/AllProjectsPage';
 
 const HomePage = () => (
@@ -17,6 +18,7 @@ const HomePage = () => (
     <Header />
     <main>
       <Hero />
+      <TrustTicker />
       <About />
       <Projects />
       <Skills />

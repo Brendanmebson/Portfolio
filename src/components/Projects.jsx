@@ -130,10 +130,12 @@ const ProjectCard = ({ project, index, onImageClick, large }) => {
             style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem', fontSize: '0.68rem' }}>
             Live Demo <ExternalLink size={11} />
           </a>
-          <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost"
-            style={{ padding: '0.55rem 0.9rem' }}>
-            <Github size={12} />
-          </a>
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost"
+              style={{ padding: '0.55rem 0.9rem' }}>
+              <Github size={12} />
+            </a>
+          )}
         </div>
       </div>
     </motion.article>
@@ -278,10 +280,12 @@ const Projects = () => {
                   style={{ flex: 1, justifyContent: 'center', fontSize: '0.7rem' }}>
                   Live Demo <ExternalLink size={11} />
                 </a>
-                <a href={featured.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost"
-                  style={{ padding: '0.55rem 0.9rem' }}>
-                  <Github size={12} />
-                </a>
+                {featured.github && (
+                  <a href={featured.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost"
+                    style={{ padding: '0.55rem 0.9rem' }}>
+                    <Github size={12} />
+                  </a>
+                )}
               </div>
             </div>
           </div>
