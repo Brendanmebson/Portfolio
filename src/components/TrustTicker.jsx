@@ -7,6 +7,7 @@ const brands = [
   { name: 'TTP', logo: '/images/projects/TTP/TTP logo.png', height: '4rem' },
   { name: 'Creative Showcase', logo: '/images/projects/CS/logo-white.png', height: '10rem' },
   { name: 'Fifi London', logo: '/images/projects/fifilondon/Fifilondonlogo.webp', height: '7rem' },
+  { name: 'CodeBridge', logo: '/images/projects/cb/logo.jpg', height: '4rem' },
 ];
 
 const TickerItem = ({ brand }) => {
