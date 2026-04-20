@@ -10,7 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { projects } from '../data/projectsData';
 
-const HOMEPAGE_GRID_LIMIT = 6;
+const HOMEPAGE_GRID_LIMIT = 9;
 
 const sliderSettings = {
   dots: false,

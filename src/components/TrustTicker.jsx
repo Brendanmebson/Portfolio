@@ -2,16 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const brands = [
-  { name: 'Apprelab' },
-  { name: 'Dyme' },
+  { name: 'Apprelab', logo: '/images/projects/appr1/apprelab_logo_light.png', height: '3rem' },
   { name: 'DXIH', logo: '/images/projects/dxhub/Logo.png' },
-  { name: 'TTP', logo: '/images/projects/TTP/TTP logo.png', height: '4.5rem' },
-  { name: 'Creative Showcase', logo: '/images/projects/CS/logo-white.png', height: '6rem' },
-  { name: 'Fifi London', logo: '/images/projects/fifilondon/Fifilondonlogo.webp', height: '6rem' },
-  { name: 'Supabase' },
-  { name: 'Cloudflare' },
-  { name: 'Vercel' },
-  { name: 'Next.js' },
+  { name: 'TTP', logo: '/images/projects/TTP/TTP logo.png', height: '4rem' },
+  { name: 'Creative Showcase', logo: '/images/projects/CS/logo-white.png', height: '10rem' },
+  { name: 'Fifi London', logo: '/images/projects/fifilondon/Fifilondonlogo.webp', height: '7rem' },
 ];
 
 const TickerItem = ({ brand }) => {
@@ -93,7 +88,7 @@ const TrustTicker = () => {
           }}
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 35,
+            duration: 15,
             repeat: Infinity,
             ease: "linear"
           }}
