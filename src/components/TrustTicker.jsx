@@ -38,7 +38,7 @@ const TickerItem = ({ brand }) => {
           src={brand.logo}
           alt={brand.name}
           style={{
-            height: brand.height || '8rem',
+            height: `calc(${brand.height || '8rem'} * var(--ticker-logo-scale))`,
             width: 'auto',
             transition: 'all 0.4s ease'
           }}
@@ -83,7 +83,7 @@ const TrustTicker = () => {
         <motion.div
           style={{
             display: 'flex',
-            gap: '5rem',
+            gap: 'var(--ticker-gap)',
             width: 'max-content',
             padding: '0 2.5rem'
           }}

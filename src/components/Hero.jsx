@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, Download } from 'lucide-react';
 import me from '../assets/me.png';
+import resume from '../assets/resume.pdf';
 
 const Hero = () => {
   const counterRef = useRef(null);
@@ -121,7 +122,7 @@ const Hero = () => {
               <a href="#projects" className="btn btn-ghost">
                 View work
               </a>
-              <a href="/resume.pdf" download className="btn btn-ghost">
+              <a href={resume} download="Mebuge_Brendan_Resume.pdf" className="btn btn-ghost">
                 <Download size={12} /> Resume
               </a>
             </motion.div>

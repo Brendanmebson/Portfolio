@@ -22,6 +22,8 @@ export const globalStyles = `
     --font-mono: 'IBM Plex Mono', monospace;
     --max-w: 1200px;
     --pad: clamp(1.25rem, 4vw, 3rem);
+    --ticker-gap: 5rem;
+    --ticker-logo-scale: 1;
   }
 
   html { scroll-behavior: smooth; }
@@ -172,5 +174,9 @@ export const globalStyles = `
 
   @media (max-width: 768px) {
     .wrap { padding: 0 1.25rem; }
+    :root {
+      --ticker-gap: 2rem;
+      --ticker-logo-scale: 0.75;
+    }
   }
 `;

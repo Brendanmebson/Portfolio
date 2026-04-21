@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUp, Github, Linkedin, Mail, Instagram } from 'lucide-react';
+import resume from '../assets/resume.pdf';
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -73,7 +74,7 @@ const Footer = () => {
             {
               title: 'Resources',
               links: [
-                { label: 'Resume', href: '/resume.pdf' },
+                { label: 'Resume', href: resume, download: "Mebuge_Brendan_Resume.pdf" },
                 { label: 'GitHub', href: 'https://github.com/Brendanmebson' },
                 { label: 'Get In Touch', href: '#contact' },
               ],

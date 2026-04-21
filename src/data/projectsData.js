@@ -95,8 +95,6 @@ export const projects = [
     images: [
       '/images/projects/cb/cb1.png',
       '/images/projects/cb/cb2.png',
-      '/images/projects/cb/cb3.png',
-      '/images/projects/cb/cb4.png',
       '/images/projects/cb/cb5.png',
       '/images/projects/cb/cb6.png',
       '/images/projects/cb/cbfull.png'
