@@ -34,6 +34,21 @@ export const projects = [
     demo: 'https://www.apprelab.com/',
   },
   {
+    title: 'Yap',
+    description: 'A premium, high-fidelity real-time messaging platform designed for a seamless mobile-first experience.',
+    detail: 'Yap is a state-of-the-art real-time messaging platform engineered for users who prioritize aesthetics, security, and a fluid mobile-first experience. Built with a sophisticated dark-mode aesthetic, it leverages Supabase Realtime for instant communication.',
+    technologies: ['React 18', 'TypeScript', 'Vite', 'Supabase', 'Material UI', 'Framer Motion', 'Emotion'],
+    images: [
+      '/images/projects/yap/yap1.png',
+      '/images/projects/yap/yap2.png',
+      '/images/projects/yap/yap3.png',
+      '/images/projects/yap/yap4.png',
+      '/images/projects/yap/yapfull.png'
+    ],
+    github: 'https://github.com/Brendanmebson/Yap',
+    demo: 'https://yap-chat.vercel.app',
+  },
+  {
     title: 'Personal Finance Tracker',
     description: 'Budget maker and expense tracker with real-time analytics.',
     detail: 'Responsive React app with Chart.js visualizations, expense categorization, and budget goals.',
@@ -59,7 +74,7 @@ export const projects = [
   {
     title: 'Intervuew — AI-Powered Interview Platform',
     description: 'Real-time AI-powered recruitment platform with interactive voice and video interviews.',
-    detail: 'Intervuew is a state-of-the-art AI-powered recruitment platform engineered to revolutionize the hiring process through real-time, interactive voice and video interviews, leveraging Gemini AI to provide intelligent, autonomous candidate assessments and deep organizational insights through a premium, high-fidelity interface.',
+    detail: 'Intervuew is a state-of-the-art AI-powered recruitment platform engineered to revolutionize the hiring process through real-time, interactive voice and video interviews, leveraging Gemini AI to provide intelligent candidate assessments.',
     technologies: ['React 18', 'TypeScript', 'Vite', 'Material UI v5', 'Emotion', 'FastAPI', 'Google Gemini AI', 'Google Cloud Run'],
     images: [
       '/images/projects/inter/int1.png',
@@ -135,6 +150,22 @@ export const projects = [
     detail: 'Students paste lecture notes and get AI-generated summaries, flashcards, and multiple-choice quizzes. Built with the OpenAI API and a React frontend.',
     technologies: ['React', 'OpenAI API', 'Node.js', 'Express.js', 'Render', 'TypeScript'],
     images: ['https://picsum.photos/800/500?random=130', 'https://picsum.photos/800/500?random=131'],
+    github: 'https://github.com/Brendanmebson',
+    demo: '#',
+  },
+  {
+    title: 'Testify',
+    description: 'An elite quality engineering and software testing ecosystem designed for high-stakes product launches.',
+    detail: 'Testify is a high-fidelity consulting platform engineered to bridge the gap between rapid software development and unwavering reliability. Built with a focus on visual excellence and technical precision, it serves as a digital headquarters for premium QA services in high-stakes sectors like FinTech and Telecom.',
+    technologies: ['React 19', 'TypeScript', 'Vite', 'Material UI (MUI)', 'React Router 7', 'Emotion', 'CSS3', 'MUI Icons'],
+    images: [
+      '/images/projects/testify/testify1.png',
+      '/images/projects/testify/testify2.png',
+      '/images/projects/testify/testify3.png',
+      '/images/projects/testify/testify4.png',
+      '/images/projects/testify/testify5.png',
+      '/images/projects/testify/testifyfull.png'
+    ],
     github: 'https://github.com/Brendanmebson',
     demo: '#',
   },
