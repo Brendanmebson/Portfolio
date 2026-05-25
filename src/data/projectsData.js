@@ -189,8 +189,8 @@ export const projects = [
       '/images/projects/jobs/jobs.io6.png',
       '/images/projects/jobs/jobs.io7.png'
     ],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
+    github: 'https://github.com/Brendanmebson/Jobs.io',
+    demo: 'https://jobs-io.vercel.app/',
   },
   {
     title: 'Neto Personal Portfolio',
