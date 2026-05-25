@@ -118,15 +118,6 @@ export const projects = [
     demo: 'https://codebridgetest.vercel.app/',
   },
   {
-    title: 'Crypto Dashboard',
-    description: 'Live crypto portfolio monitoring with charts and alerts.',
-    detail: 'Pulls live prices from crypto APIs, renders interactive Chart.js graphs, and supports portfolio tracking.',
-    technologies: ['TypeScript', 'React', 'Crypto APIs'],
-    images: ['https://picsum.photos/800/500?random=109', 'https://picsum.photos/800/500?random=110'],
-    github: 'https://github.com/Brendanmebson',
-    demo: '#',
-  },
-  {
     title: 'QR Code Generator',
     description: 'Customizable QR code generation for URLs and text.',
     detail: 'Lightweight tool generating styled, downloadable QR codes instantly. Supports custom colors, logo embedding, and vCard encoding.',
@@ -143,6 +134,21 @@ export const projects = [
     images: ['https://picsum.photos/800/500?random=120', 'https://picsum.photos/800/500?random=121'],
     github: 'https://github.com/Brendanmebson',
     demo: '#',
+  },
+  {
+    title: 'Atlas',
+    description: 'A premium, glassmorphism-inspired cryptocurrency management platform designed for the modern Web3 ecosystem.',
+    detail: 'Atlas is a high-fidelity cryptocurrency dashboard that prioritizes user experience through a sophisticated \"soft light\" aesthetic and glassmorphic UI elements. Built with a scalable 3-column architecture, the platform integrates real-time market data, interactive financial visualizations via Recharts, and seamless portfolio tracking.',
+    technologies: ['React 18', 'TypeScript', 'Vite', 'Material UI (MUI) 5', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Zustand', 'React Query', 'Axios'],
+    images: [
+      '/images/projects/atlas/atlas01.png',
+      '/images/projects/atlas/atlas1.png',
+      '/images/projects/atlas/atlas2.png',
+      '/images/projects/atlas/atlas3.png',
+      '/images/projects/atlas/atlas4.png'
+    ],
+    github: 'https://github.com/Brendanmebson/Atlas',
+    demo: 'https://atlas-onedash.vercel.app',
   },
   {
     title: 'AI Study Assistant',
@@ -170,11 +176,19 @@ export const projects = [
     demo: '#',
   },
   {
-    title: 'Hotel Booking Platform',
-    description: 'Room search, availability calendar, and full booking management.',
-    detail: 'Full-stack booking platform with real-time availability checking, date range selection, guest management, and confirmation email dispatch via Nodemailer.',
-    technologies: ['React', 'Express.js', 'Node.js', 'Render', 'PostgreSQL', 'Supabase'],
-    images: ['https://picsum.photos/800/500?random=140', 'https://picsum.photos/800/500?random=141'],
+    title: 'Jobs.io – Premium Career OS',
+    description: 'A high-performance, centralized career management suite designed to orchestrate and optimize the modern job search experience.',
+    detail: 'Jobs.io is a sophisticated career management ecosystem engineered for professionals who demand clarity and efficiency in their job search. The platform serves as a "Career OS," centralizing job application tracking, document management, and interview scheduling into a seamless, high-fidelity interface. Architecturally, it utilizes a modular React framework with a robust custom-themed design system built on Material UI, ensuring visual excellence across all breakpoints.',
+    technologies: ['React 18', 'TypeScript', 'Vite', 'Material UI (MUI)', 'Lucide React', 'Unsplash API', 'Recharts', 'React Context API', 'Date-fns', 'Vercel', 'Browser Persistence API'],
+    images: [
+      '/images/projects/jobs/jobs.io1.png',
+      '/images/projects/jobs/jobs.io2.png',
+      '/images/projects/jobs/jobs.io3.png',
+      '/images/projects/jobs/jobs.io4.png',
+      '/images/projects/jobs/jobs.io5.png',
+      '/images/projects/jobs/jobs.io6.png',
+      '/images/projects/jobs/jobs.io7.png'
+    ],
     github: 'https://github.com/Brendanmebson',
     demo: '#',
   },
